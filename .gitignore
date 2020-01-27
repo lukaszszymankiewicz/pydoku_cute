@@ -6,3 +6,13 @@ pip-log.txt
 
 # Environments
 venv/
+
+# vim files
+*.swp
+
+# PyCharm .idea files
+*.idea/
+
+# chache
+__pychache__/
+
