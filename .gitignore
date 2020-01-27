@@ -1,0 +1,8 @@
+# Byte-compiled / optimized / DLL files
+.pytest_cache/
+
+# Installer logs
+pip-log.txt
+
+# Environments
+venv/
