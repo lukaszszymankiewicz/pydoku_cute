@@ -1,6 +1,6 @@
 import numpy as np
-from .constants import SUDOKU_NUMBERS, SQUARE_NUMBERS, SUDOKU_INDICES 
 
+from .constants import SUDOKU_NUMBERS, SQUARE_NUMBERS, SUDOKU_INDICES 
 
 
 def get_random_nonzero_elements_of_array(array: np.ndarray, n_elements:int) ->np.ndarray:
@@ -34,4 +34,3 @@ def generate_random_order_of_groups():
     groups = np.split(old_order, 3) 
     np.random.shuffle(groups)
     return np.concatenate(groups)
-

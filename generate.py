@@ -1,8 +1,5 @@
 import numpy as np
-import time
 
-from objects import Sudoku
-from objects.utils.enums import Axis
 from objects.static.full_board import full_board
 from objects.utils.random import (
     get_random_nonzero_elements_of_array,
@@ -25,7 +22,6 @@ def generate(n_empty_cells = 45) -> np.ndarray:
 
     # using above random order shuffle the sudoku
     sudoku = replace_values(sudoku, mapping)    
-    order = generate_random_order()
     sudoku = sudoku[:, random_columns_order]
     sudoku = sudoku[random_rows_order, :]
     sudoku = sudoku[random_groups_of_rows_order, :]
