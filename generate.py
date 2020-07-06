@@ -1,36 +1,38 @@
 import numpy as np
+import time
 
-from objects import NonzeroNumbers, PossiblesMatrix, Sudoku
-from util import Axis
+from objects import Sudoku
+from objects.utils.enums import Axis
+from objects.static.full_board import full_board
+from objects.utils.random import (
+    get_random_nonzero_elements_of_array,
+    generate_numbers_mapping,
+    generate_random_order_of_groups,
+    generate_random_order,
+)
+from objects.utils.misc import replace_values
 
 
-def generate(n_numbers_to_fill: int = 10):
-    sudoku = Sudoku()
+def generate(n_empty_cells = 45) -> np.ndarray:
+    sudoku = full_board
 
-    for _ in range(n_numbers_to_fill):
-        # Firstly, I`m choosing random square on sudoku array which does not have any number on it.
-        a = np.argwhere(sudoku.array==0)
-        b = np.random.randint(a.shape[0])
-        c = a[b]
+    # generate all random order
+    mapping = generate_numbers_mapping() 
+    random_rows_order = generate_random_order()
+    random_columns_order = generate_random_order()
+    random_groups_of_rows_order = generate_random_order_of_groups()
+    random_groups_of_columns_order = generate_random_order_of_groups()
 
-        # Seconly, I1`m taking indices of this empty square and check which number are aveilable
-        # there.
-        number_to_put = np.random.choice(sudoku.possibles.array[c[0], c[1]])
-        cc = sudoku.possibles.array[c[0], c[1]]
-        b = np.nonzero(cc)
+    # using above random order shuffle the sudoku
+    sudoku = replace_values(sudoku, mapping)    
+    order = generate_random_order()
+    sudoku = sudoku[:, random_columns_order]
+    sudoku = sudoku[random_rows_order, :]
+    sudoku = sudoku[random_groups_of_rows_order, :]
+    sudoku = sudoku[:, random_columns_order]
+    
+    # having full random solved sudoku, set some cells to empty
+    random_nonzero_value = get_random_nonzero_elements_of_array(sudoku, n_empty_cells)
+    sudoku[random_nonzero_value[0], random_nonzero_value[1]] = 0
 
-        a = np.random.choice(b[0])
-        sudoku.array[c[0], c[1]] = number_to_put
-
-        # Finally this number should be cross out from possibles
-        nonzeros = NonzeroNumbers(sudoku)
-
-        sudoku.possibles.cross_out_all_numbers_from_position(nonzeros)
-        sudoku.possibles.cross_out_numbers_from_columns(nonzeros)
-        sudoku.possibles.cross_out_numbers_from_rows(nonzeros)
-        sudoku.possibles.cross_out_numbers_from_squares(nonzeros)
-
-    return sudoku.array
-
-print(generate())
-
+    return sudoku

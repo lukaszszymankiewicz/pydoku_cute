@@ -1,23 +1,22 @@
 import numpy as np
 
-from pydoku.enum import Axis
-from pydoku.objects import NonzeroNumbers, PossiblesMatrix, Sudoku
+from objects import Sudoku
+from objects.utils.enums import Axis
 
 
-def solve(array: np.ndarray):
-    possibles = PossiblesMatrix(array)
+def solve(array: np.ndarray) -> np.ndarray:
     sudoku = Sudoku(array)
 
     while sudoku.is_not_solved:
-        nonzeros = NonzeroNumbers(sudoku)
+        sudoku.update_possibilities()
 
-        possibles.cross_out_all_numbers_from_position(nonzeros)
-        possibles.cross_out_numbers_from_columns(nonzeros)
-        possibles.cross_out_numbers_from_rows(nonzeros)
-        possibles.cross_out_numbers_from_squares(nonzeros)
+        sole_candidates_nbrs = sudoku.possibles.find_sole_candidate(Axis.number)
+        sole_candidates_rows = sudoku.possibles.find_sole_candidate(Axis.row)
+        sole_candidates_cols = sudoku.possibles.find_sole_candidate(Axis.column)
+    
+        sole_candidates = sole_candidates_nbrs | sole_candidates_rows | sole_candidates_cols
 
-        sudoku.add_numbers(possibles.lonely_numbers(Axis.number))
-        sudoku.add_numbers(possibles.lonely_numbers(Axis.row))
-        sudoku.add_numbers(possibles.lonely_numbers(Axis.column))
+        sudoku.add_numbers(sole_candidates)
 
+    print(sudoku.array)
     return sudoku.array

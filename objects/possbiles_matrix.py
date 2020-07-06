@@ -1,11 +1,14 @@
 import numpy as np
 
+from .static.square_indices import square_indices, squares
+from .utils.generation import generate_empty_possibles_matrix
+
 
 class PossiblesMatrix:
-    def __init__(self, sudoku):
-        self.side = sudoku.shape[0]
-        self.square_size = np.sqrt(self.side).astype(int)
-        self.array = np.mgrid[1: self.side + 1, 1: self.side + 1, 1: self.side + 1][2]
+    __slots__ = ["array"] 
+
+    def __init__(self):
+        self.array = generate_empty_possibles_matrix()
 
     def cross_out_all_numbers_from_position(self, nonzeros):
         self.array[nonzeros.rows, nonzeros.columns, :] = 0
@@ -16,20 +19,23 @@ class PossiblesMatrix:
     def cross_out_numbers_from_rows(self, nonzeros):
         self.array[:, nonzeros.columns, nonzeros.numbers] = 0
 
-    def square_indices(self, number:int):
-        start = number // self.square_size * self.square_size
-        stop = start + self.square_size
-        return np.arange(start, stop)
-
-    def get_square_indices(self, row:int, col:int, number:int):
-        square_row_indices = self.square_indices(row)
-        square_col_indices = self.square_indices(col)
-        return np.ix_(square_row_indices, square_col_indices, [number])
-
     def cross_out_numbers_from_squares(self, nonzeros):
         for row, col, number in zip(nonzeros.rows, nonzeros.columns, nonzeros.numbers):
-            self.array[self.get_square_indices(row, col, number)] = 0
+            self.array[square_indices[row], square_indices[col], number] = 0
 
-    def lonely_numbers(self, axis:int):
+    def find_sole_candidate(self, axis:int) -> np.ndarray:
         mask = (self.array != 0).sum(axis=axis, keepdims=True) > 1
-        return np.where(mask, 0, self.array).sum(axis=2)
+        return np.where(mask, 0, self.array).sum(axis=2).astype(np.uint8)
+
+    def xxx(self, array, axis:int) -> np.ndarray:
+        mask = (array != 0).sum(axis=axis, keepdims=True) > 1
+        return np.where(mask, 0, array).sum(axis=2).astype(np.uint8)
+
+    def find_sole_candidates_in_squares(self) -> np.ndarray:
+        empty = np.zeros((9,9)).astype(np.uint8)
+
+        for square in squares:
+            to_fill = self.xxx(array=self.array[square[0], square[1]], axis=1)
+            empty[square[0], square[1]] == to_fill
+
+        return empty

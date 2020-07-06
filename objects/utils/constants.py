@@ -1,0 +1,9 @@
+import numpy as np
+
+
+NUMBERS_TYPE = np.uint8
+SIDE_SIZE = 9
+SUDOKU_SIZE = (9, 9)
+SQUARE_NUMBERS = 3
+SUDOKU_NUMBERS = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).astype(NUMBERS_TYPE)
+SUDOKU_INDICES = SUDOKU_NUMBERS - 1
