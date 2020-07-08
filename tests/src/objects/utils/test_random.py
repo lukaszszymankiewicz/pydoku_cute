@@ -96,8 +96,8 @@ def test_generate_random_order_of_groups_return_proper_results():
     assert np.all(expected_sorted_results == random_order_of_groups)
 
 
-@pytest.mark.parametrize("n_cells", list(range(10)))
-def test_generate_bool_returns_proper_results():
+@pytest.mark.parametrize("probe", list(range(10)))
+def test_generate_bool_returns_proper_results(probe):
     # GIVEN
     expected_results_pool = [True, False]
 
