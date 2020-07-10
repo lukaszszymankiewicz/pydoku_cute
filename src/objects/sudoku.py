@@ -10,7 +10,7 @@ class Sudoku:
 
     def __init__(self, sudoku_to_solve: np.array = None):
         if sudoku_to_solve is None:
-            self.array = genertte_empty_sudoku((9,9))
+            self.array = generate_empty_sudoku()
         else:
             self.array = sudoku_to_solve
 
@@ -20,15 +20,12 @@ class Sudoku:
     @property
     def is_not_solved(self) -> bool:
         return 0 in self.array
-    
+   
     def update_nonzeros(self):
         self.nonzeros = NonzeroNumbers(self.array)
 
-    def add_numbers(self, numbers: np.array):
-        self.array |= numbers
-
-    def add_number(self, row:int, col:int, number:int):
-        self.array[row, col] = number
+    def add_numbers(self, rows: int, cols: int, numbers: int):
+        self.array[rows, cols] = numbers + 1
 
     def update_possibilities(self):
         self.update_nonzeros()

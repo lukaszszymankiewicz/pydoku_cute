@@ -5,7 +5,7 @@ from src.objects.utils.generation import generate_empty_possibles_matrix
 
 
 class PossiblesMatrix:
-    __slots__ = ["array"] 
+    __slots__ = ["array"]
 
     def __init__(self):
         self.array = generate_empty_possibles_matrix()
@@ -25,7 +25,10 @@ class PossiblesMatrix:
 
     def find_sole_candidate(self, axis:int) -> np.ndarray:
         mask = (self.array != 0).sum(axis=axis, keepdims=True) > 1
-        return np.where(mask, 0, self.array).sum(axis=2).astype(np.uint8)
+        candidates = np.where(mask, 0, self.array).astype(np.uint8)
+        candidates_indices = np.nonzero(candidates)
+
+        return candidates_indices
 
     def xxx(self, array, axis:int) -> np.ndarray:
         mask = (array != 0).sum(axis=axis, keepdims=True) > 1
