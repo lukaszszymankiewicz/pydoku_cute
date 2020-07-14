@@ -58,10 +58,6 @@ class Sudoku:
     def get_most_promising_cell(self) -> np.ndarray:
         return find_the_least_occuring_element_in_matrix(self._possibles)
 
-    def get_possible_values(self, indices) -> np.ndarray:
-        import pdb;pdb.set_trace()
-        return filter_zeros_from_vector(self._possibles[tuple(indices)])
-
     def get_sudoku_combinations(self, row, column, values):
         return create_matrix_combinations_with_one_changed_value(self.array, row, column, values)
 

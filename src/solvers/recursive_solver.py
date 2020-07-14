@@ -2,7 +2,6 @@ import numpy as np
 
 from .naive_solver import naive_solver
 
-from src.objects import Sudoku
 from src.objects.result import Result
 
 

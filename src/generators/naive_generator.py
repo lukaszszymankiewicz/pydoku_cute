@@ -1,18 +1,19 @@
 import numpy as np
 
-from src.static.full_board import full_board
+from src.file_loaders.load_sample_sudoku import load_sample_solved_sudoku
+
 from src.objects.utils.random import (
     generate_random_indices_of_nonzero_elements,
     generate_numbers_mapping,
     generate_random_order_of_groups,
     generate_random_order,
     generate_bool,
- )
+)
 from src.objects.utils.misc import replace_values
 
 
-def naive_generate(n_empty_cells = 45) -> np.ndarray:
-    sudoku = full_board
+def naive_generator(n_empty_cells = 45) -> np.ndarray:
+    sudoku = load_sample_solved_sudoku(np.random.randint(100))
 
     # generate all random order
     mapping = generate_numbers_mapping()
@@ -32,7 +33,7 @@ def naive_generate(n_empty_cells = 45) -> np.ndarray:
 
     if flip_vertically:
         sudoku = np.flipud(sudoku)
- 
+
     if flip_horizontally:
         sudoku = np.fliplr(sudoku)
 
