@@ -8,11 +8,11 @@ def naive_solver(array: np.ndarray) -> np.ndarray:
     sudoku = Sudoku(array)
 
     while not sudoku.is_solved:
-        candidates = sudoku.find_sole_candidates()
+        candidates_rows, candidates_cols, candidates_nbrs = sudoku.find_sole_candidates()
 
-        if candidates.size == 0:
+        if candidates_rows.size == 0 and candidates_cols.size == 0 and candidates_nbrs.size == 0:
             return Result(sudoku, solved=False)
 
-        sudoku.add_numbers(*candidates)
+        sudoku[candidates_rows, candidates_cols] = candidates_nbrs
 
     return Result(sudoku, solved=True)

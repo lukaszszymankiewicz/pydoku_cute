@@ -16,17 +16,18 @@ def find_the_least_occuring_element_in_matrix(matrix: np.ndarray) -> np.ndarray:
         numpy array containing indices of most-empty row (or last dimension)
     """
     counts = np.count_nonzero(matrix, axis=-1)
-    return np.argwhere(counts == np.unique(counts)[1])[0]
+    indices = np.argwhere(counts == np.unique(counts)[1])[0]
+    return indices[0], indices[1]
 
 
 def create_matrix_combinations_with_one_changed_value(
-    matrix:np.ndarray, indices:np.ndarray, values:np.ndarray
+    matrix: np.ndarray, row: int, col: int, values: np.ndarray
 ):
     matrix_combinations = []
 
     for value in values:
         new_matrix = np.copy(matrix)
-        new_matrix[tuple(indices)] = value
+        new_matrix[row, col] = value
         matrix_combinations.append(new_matrix)
 
     return matrix_combinations

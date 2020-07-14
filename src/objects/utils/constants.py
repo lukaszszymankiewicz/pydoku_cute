@@ -11,7 +11,7 @@ SQUARE_NUMBERS = 3
 SUDOKU_NUMBERS = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).astype(NUMBERS_TYPE)
 SUDOKU_INDICES = SUDOKU_NUMBERS - 1
 
-SQUARE_INDICES = {
+SQUARE_MAPPING = {
         0: slice(0, 3, None), 
         1: slice(0, 3, None), 
         2: slice(0, 3, None), 

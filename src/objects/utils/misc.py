@@ -13,6 +13,6 @@ def find_unique_number(array:np.ndarray, axis:int) -> np.ndarray:
     # TODO: add generit type
     candidates = np.where(mask, 0, array).astype(np.uint8)
     candidates_indices = np.nonzero(candidates)
-
+    
     return candidates_indices
 

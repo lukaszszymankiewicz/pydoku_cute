@@ -16,15 +16,16 @@ def recursive_solver(array: np.ndarray):
 
         if not result.is_solved:
             inconclusive_sudoku = result.sudoku
-            indices = inconclusive_sudoku.get_most_promising_cell()
-            possible_numbers = inconclusive_sudoku.get_possible_values(indices)
-            sudokus.extend(inconclusive_sudoku.get_sudoku_combinations(indices, possible_numbers))
+            cell_row, cell_col = inconclusive_sudoku.get_most_promising_cell()
+            numbers = inconclusive_sudoku.get_possibles_numbers(cell_row, cell_col)
+            new_sudokus = inconclusive_sudoku.get_sudoku_combinations(cell_row, cell_col, numbers)
+            sudokus.extend(new_sudokus)
 
             nodes += 1
-            branches += len(possible_numbers)
+            branches += len(numbers)
 
         else:
-            result.solved=True,
+            result.solved = True
             result.nodes = nodes
             result.branches = branches
             return result

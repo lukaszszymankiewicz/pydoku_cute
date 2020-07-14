@@ -1,4 +1,4 @@
-from .constants import EMPTY, ALL, SQUARE_INDICES, SQUARES
+from .constants import EMPTY, ALL, SQUARE_MAPPING, SQUARES
 from .enums import Axis
 from .generation import generate_empty_possibles_matrix
 from .matrix import (
