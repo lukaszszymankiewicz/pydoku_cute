@@ -2,6 +2,7 @@ import numpy as np
 
 from src.objects import Sudoku
 from src.static.full_board import full_board
+from src.objects.utils.constants import SQUARES
 
 
 def test_is_not_solved_sudoku_works_properly():
@@ -13,8 +14,8 @@ def test_is_not_solved_sudoku_works_properly():
     sample_not_solved_sudoku = Sudoku(sample_not_solved_sudoku_array)
 
     # THEN
-    assert sample_solved_sudoku.is_not_solved == False
-    assert sample_not_solved_sudoku.is_not_solved == True
+    assert sample_solved_sudoku.is_solved == True
+    assert sample_not_solved_sudoku.is_solved == False
 
 
 def test_initializing_empty_sudoku_returns_proper_sudoku():
@@ -51,8 +52,8 @@ def test_update_nonzeros_function_returns_proper_results():
     sudoku.update_nonzeros()
 
     # THEN
-    assert np.all(sudoku.nonzeros.indices == expected_nonzero_object_values)
-    assert np.all(sudoku.nonzeros.nonzero_numbers == expected_nonzero_numbers)
+    assert np.all(sudoku._nonzeros.indices == expected_nonzero_object_values)
+    assert np.all(sudoku._nonzeros.nonzero_numbers == expected_nonzero_numbers)
 
 
 def test_add_numbers_function_works_properly():
@@ -69,3 +70,20 @@ def test_add_numbers_function_works_properly():
 
     # THEN
     assert np.all(sudoku.array == expected_sudoku_array)
+
+
+def test_find_sole_candidates_in_squares_works_properly():
+    # GIVEN
+    array = full_board
+    expected_sole_candidates_in_squares = (np.array([0,7]), np.array([0,7]), np.array([7,4]))
+    array[0, 0] = 0
+    array[7, 7] = 0
+
+    # WHEN
+    sudoku = Sudoku(array)
+    sudoku.update_possibilities()
+    sole_candidates_in_squares = sudoku.find_sole_candidates_in_squares()
+
+    # THEN
+    for expected, candidates in zip(expected_sole_candidates_in_squares, sole_candidates_in_squares):
+        assert all(expected == candidates)
