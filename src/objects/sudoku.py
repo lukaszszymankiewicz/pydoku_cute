@@ -10,7 +10,7 @@ from src.objects.utils import (
     create_matrix_combinations_with_one_changed_value,
     find_unique_number,
     filter_zeros_from_vector,
-    )
+)
 
 
 class Sudoku:
@@ -29,7 +29,7 @@ class Sudoku:
     @property
     def is_solved(self) -> bool:
         return not EMPTY in self.array
-    
+
     @property
     def filled_rows(self):
         return np.nonzero(self.array)[Axis.row]
@@ -74,4 +74,3 @@ class Sudoku:
         sole_candidates_nbrs = find_unique_number(self._possibles, Axis.number)
 
         return np.hstack([sole_candidates_rows, sole_candidates_cols, sole_candidates_nbrs])
-

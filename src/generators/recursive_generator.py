@@ -4,7 +4,7 @@ from src.solvers.recursive_solver import recursive_solver
 from src.solvers.naive_solver import naive_solver
 
 
-def recursive_conclusive_generator(n_min_numbers: int=1):
+def recursive_conclusive_generator(n_min_numbers: int = 1):
     to_place = np.arange(1, 10).astype(np.uint8)
     np.random.shuffle(to_place)
     empty_sudoku = np.zeros((9, 9)).astype(np.uint8)

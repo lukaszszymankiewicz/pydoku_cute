@@ -20,4 +20,4 @@ __all__ = [
     "create_matrix_combinations_with_one_changed_value",
     "find_unique_number",
     "filter_zeros_from_vector",
-    ]
+]

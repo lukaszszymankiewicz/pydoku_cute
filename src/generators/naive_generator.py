@@ -12,7 +12,7 @@ from src.objects.utils.random import (
 from src.objects.utils.misc import replace_values
 
 
-def naive_generator(n_empty_cells = 45) -> np.ndarray:
+def naive_generator(n_empty_cells=45) -> np.ndarray:
     sudoku = load_sample_solved_sudoku(np.random.randint(100))
 
     # generate all random order

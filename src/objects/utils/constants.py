@@ -12,27 +12,25 @@ SUDOKU_NUMBERS = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).astype(NUMBERS_TYPE)
 SUDOKU_INDICES = SUDOKU_NUMBERS - 1
 
 SQUARE_MAPPING = {
-        0: slice(0, 3, None), 
-        1: slice(0, 3, None), 
-        2: slice(0, 3, None), 
-        3: slice(3, 6, None), 
-        4: slice(3, 6, None), 
-        5: slice(3, 6, None), 
-        6: slice(6, 9, None), 
-        7: slice(6, 9, None), 
-        8: slice(6, 9, None),
-        }
+    0: slice(0, 3, None),
+    1: slice(0, 3, None),
+    2: slice(0, 3, None),
+    3: slice(3, 6, None),
+    4: slice(3, 6, None),
+    5: slice(3, 6, None),
+    6: slice(6, 9, None),
+    7: slice(6, 9, None),
+    8: slice(6, 9, None),
+}
 
 SQUARES = [
     (slice(0, 3, None), slice(0, 3, None)),
     (slice(0, 3, None), slice(3, 6, None)),
     (slice(0, 3, None), slice(6, 9, None)),
-
     (slice(3, 6, None), slice(0, 3, None)),
     (slice(3, 6, None), slice(3, 6, None)),
     (slice(3, 6, None), slice(6, 9, None)),
-
     (slice(6, 9, None), slice(0, 3, None)),
     (slice(6, 9, None), slice(3, 6, None)),
     (slice(6, 9, None), slice(6, 9, None)),
-    ]
+]

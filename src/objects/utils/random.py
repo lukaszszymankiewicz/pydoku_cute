@@ -1,9 +1,9 @@
 import numpy as np
 
-from .constants import SUDOKU_NUMBERS, SQUARE_NUMBERS, SUDOKU_INDICES 
+from .constants import SUDOKU_NUMBERS, SQUARE_NUMBERS, SUDOKU_INDICES
 
 
-def generate_random_indices_of_nonzero_elements(array: np.ndarray, sample_size:int) ->np.ndarray:
+def generate_random_indices_of_nonzero_elements(array: np.ndarray, sample_size: int) -> np.ndarray:
     possibilities = np.vstack(np.nonzero(array))
     random_index = np.random.choice(a=possibilities.shape[1], size=sample_size, replace=False)
     return possibilities[:, random_index]
@@ -26,8 +26,8 @@ def generate_numbers_mapping():
 
 
 def generate_random_order():
-    old_order = SUDOKU_INDICES 
-    groups = np.split(old_order, SQUARE_NUMBERS) 
+    old_order = SUDOKU_INDICES
+    groups = np.split(old_order, SQUARE_NUMBERS)
     for group in groups:
         np.random.shuffle(group)
     return np.concatenate(groups)
@@ -35,6 +35,6 @@ def generate_random_order():
 
 def generate_random_order_of_groups():
     old_order = SUDOKU_INDICES
-    groups = np.split(old_order, 3) 
+    groups = np.split(old_order, 3)
     np.random.shuffle(groups)
     return np.concatenate(groups)
