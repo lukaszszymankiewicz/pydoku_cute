@@ -1,30 +1,40 @@
 import numpy as np
 
 from src.objects.utils import (
-    ALL,
-    EMPTY,
-    SQUARE_MAPPING,
     Axis,
     generate_empty_possibles_matrix,
     find_the_least_occuring_element_in_matrix,
-    create_matrix_combinations_with_one_changed_value,
+    get_matrix_combinations,
     find_unique_number,
     filter_zeros_from_vector,
 )
+from src.static.constants import NUMBERS_TYPE, ALL, EMPTY, SQUARE_MAPPING
+from copy import deepcopy
 
 
 class Sudoku:
     __slots__ = ["array", "_possibles"]
 
     def __init__(self, array: np.array):
-        self.array = array
-        self._possibles = generate_empty_possibles_matrix()
+        self.array = array.astype(NUMBERS_TYPE)
+        self._possibles_matrix = generate_empty_possibles_matrix()
 
     def __setitem__(self, indices, values):
-        self.array[indices[Axis.row], indices[Axis.column]] = values + 1
+        self.array[indices] = values
 
     def __getitem__(self, indices):
         return self.array[indices]
+
+    def __repr__(self):
+        return self.array.__repr__()
+
+    @property
+    def where_is_empty(self) -> np.ndarray:
+        return np.argwhere(self.array == EMPTY)
+
+    @property
+    def where_is_filled(self) -> np.ndarray:
+        return np.argwhere(self.array != EMPTY)
 
     @property
     def is_solved(self) -> bool:
@@ -32,15 +42,18 @@ class Sudoku:
 
     @property
     def filled_rows(self):
-        return np.nonzero(self.array)[Axis.row]
+        return self.where_is_filled[:, Axis.row]
 
     @property
     def filled_columns(self):
-        return np.nonzero(self.array)[Axis.column]
+        return self.where_is_filled[:, Axis.column]
 
     @property
     def filled_numbers(self):
         return self.array[self.filled_rows, self.filled_columns] - 1
+
+    def copy(self):
+        return Sudoku(array=deepcopy(self.array))
 
     def get_possibles(self, rows, columns):
         return self._possibles[rows, columns]
@@ -59,7 +72,8 @@ class Sudoku:
         return find_the_least_occuring_element_in_matrix(self._possibles)
 
     def get_sudoku_combinations(self, row, column, values):
-        return create_matrix_combinations_with_one_changed_value(self.array, row, column, values)
+        combinations = get_matrix_combinations(self.array, row, column, values)
+        return [Sudoku(combination) for combination in combinations]
 
     def update_possibilities(self):
         self.set_possibles(ALL, self.filled_columns, self.filled_numbers, EMPTY)

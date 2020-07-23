@@ -2,32 +2,31 @@ import numpy as np
 
 from src.solvers.recursive_solver import recursive_solver
 from src.solvers.naive_solver import naive_solver
+from src.objects.sudoku import Sudoku
+from src.static.constants import SUDOKU_NUMBERS, SUDOKU_SIZE, SIDE_SIZE, EMPTY
+from src.generators.utils import get_random_indices
 
 
-def recursive_conclusive_generator(n_min_numbers: int = 1):
-    to_place = np.arange(1, 10).astype(np.uint8)
-    np.random.shuffle(to_place)
-    empty_sudoku = np.zeros((9, 9)).astype(np.uint8)
-    indices = np.argwhere(empty_sudoku == 0)
-    random_indices = np.random.choice(a=indices.shape[0], size=9)
+def recursive_conclusive_generator():
+    """
+    Generates random sudoku using recursion.
 
-    for index, value in zip(random_indices, to_place):
-        row = indices[index][0]
-        col = indices[index][1]
-        empty_sudoku[row, col] = value
+    First, algorithm is placing numbers from 1 to 9 in random places into empty sudoku array.
+    Secondly, array is filled up to last cell (fully solved sudoku is achieved)
+    And, finally, number by number is taken from array till it results in sudoku with only one
+    answer.
+    """
+    sudoku = Sudoku(np.zeros(SUDOKU_SIZE))
 
-    filled_sudoku = recursive_solver(empty_sudoku).sudoku.array
+    random_indices = get_random_indices(sudoku.where_is_empty, SIDE_SIZE)
+    sudoku[random_indices] = SUDOKU_NUMBERS
+    solved_sudoku = recursive_solver(sudoku)
 
     while True:
-        last_step_sudoku = np.copy(filled_sudoku)
+        last_step_sudoku = solved_sudoku.copy()
+        random_indices = get_random_indices(last_step_sudoku.where_is_filled)
+        last_step_sudoku[random_indices] = EMPTY
 
-        nonzeros = np.argwhere(last_step_sudoku)
-        random_number = np.random.randint(low=0, high=nonzeros.shape[0])
-        row = nonzeros[random_number][0]
-        col = nonzeros[random_number][1]
-        last_step_sudoku[row, col] = 0
-
-        if naive_solver(last_step_sudoku).is_solved == False:
-            return filled_sudoku
-        else:
-            filled_sudoku[row, col] = 0
+        if not naive_solver(last_step_sudoku).is_solved:
+            return solved_sudoku
+        solved_sudoku[random_indices] = EMPTY

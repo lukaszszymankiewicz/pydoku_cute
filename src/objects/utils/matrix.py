@@ -20,7 +20,7 @@ def find_the_least_occuring_element_in_matrix(matrix: np.ndarray) -> np.ndarray:
     return indices[0], indices[1]
 
 
-def create_matrix_combinations_with_one_changed_value(
+def get_matrix_combinations(
     matrix: np.ndarray, row: int, col: int, values: np.ndarray
 ):
     matrix_combinations = []
