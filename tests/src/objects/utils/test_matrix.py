@@ -31,14 +31,13 @@ def test_find_the_least_occuring_element_in_matrix_works_properly_for_simple_cas
         ]
     )
 
-    expected_indices = array([2]), array([2])
+    expected_indices = (0, 0)
 
     # WHEN
     indices = find_least_filled_place_in_matrix(sample_matrix)
-    
+
     # THEN
-    for index, expected_index in zip(indices, expected_indices):
-        assert numpy_all(index == expected_index)
+    assert indices == expected_indices
 
 
 def test_find_the_least_occuring_element_in_matrix_works_properly_equal_counts_case():

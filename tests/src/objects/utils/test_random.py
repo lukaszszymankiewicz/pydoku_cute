@@ -106,4 +106,4 @@ def test_generate_bool_returns_proper_results(probe):
    
     # THEN
     assert result in expected_results_pool
-    assert isinstance(result, bool)
+    assert type(result) == np.bool_
