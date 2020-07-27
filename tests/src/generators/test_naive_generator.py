@@ -2,8 +2,8 @@ import pytest
 
 import numpy as np
 
-from src.generators.naive_generator import naive_generate
-from src.static.square_indices import squares
+from src.generators.naive_generator import naive_generator
+from src.static.constants import SQUARES
 
 
 @pytest.mark.parametrize("n_cells", list(range(81)))
@@ -12,7 +12,7 @@ def test_naive_generator_return_proper_number_of_empty_cells(n_cells):
     expected_number_of_filled_cells = 9*9-n_cells
 
     # WHEN
-    generated_sudoku = naive_generate(n_cells)
+    generated_sudoku = naive_generator(n_cells)
     number_of_filled_cells = np.count_nonzero(generated_sudoku)
 
     # THEN
@@ -30,7 +30,7 @@ def test_naive_generator_returns_unique_values_in_rows(n_cells):
     expected_number_of_filled_cells = 9*9-n_cells
 
     # WHEN & THEN
-    generated_sudoku = naive_generate(n_cells)
+    generated_sudoku = naive_generator(n_cells)
 
     for row in generated_sudoku:
         row.sort()
@@ -55,7 +55,7 @@ def test_naive_generator_returns_unique_values_in_columns(n_cells):
     expected_number_of_filled_cells = 9*9-n_cells
 
     # WHEN & THEN
-    generated_sudoku = naive_generate(n_cells)
+    generated_sudoku = naive_generator(n_cells)
 
     for col in generated_sudoku.T:
         col.sort()
@@ -80,9 +80,9 @@ def test_naive_generator_returns_unique_values_in_squares(n_cells):
     expected_number_of_filled_cells = 9*9-n_cells
 
     # WHEN & THEN
-    generated_sudoku = naive_generate(n_cells)
+    generated_sudoku = naive_generator(n_cells)
 
-    for square in squares:
+    for square in SQUARES:
         square_values = generated_sudoku[square[0], square[1]]
         square_values = square_values.flatten()
         square_values.sort()

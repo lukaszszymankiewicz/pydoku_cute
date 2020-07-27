@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def find_the_least_occuring_element_in_matrix(matrix: np.ndarray) -> np.ndarray:
+def find_least_filled_place_in_matrix(matrix: np.ndarray) -> np.ndarray:
     """
         Finds indices of row (or last dimension) which has the least non-zero elements.
     Function is using numpy unique to count occurances of non-zero elements in every cell, then 

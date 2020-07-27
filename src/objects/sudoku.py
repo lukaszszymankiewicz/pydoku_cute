@@ -2,13 +2,12 @@ import numpy as np
 
 from src.objects.utils import (
     Axis,
-    generate_empty_possibles_matrix,
-    find_the_least_occuring_element_in_matrix,
+    find_least_filled_place_in_matrix,
     get_matrix_combinations,
     find_unique_number,
-    filter_zeros_from_vector,
 )
-from src.static.constants import NUMBERS_TYPE, ALL, EMPTY, SQUARE_MAPPING
+from .possibles_matrix import PossiblesMatrix
+from src.static.constants import NUMBERS_TYPE, ALL, EMPTY
 from copy import deepcopy
 
 
@@ -17,7 +16,7 @@ class Sudoku:
 
     def __init__(self, array: np.array):
         self.array = array.astype(NUMBERS_TYPE)
-        self._possibles_matrix = generate_empty_possibles_matrix()
+        self._possibles = PossiblesMatrix()
 
     def __setitem__(self, indices, values):
         self.array[indices] = values
@@ -55,36 +54,19 @@ class Sudoku:
     def copy(self):
         return Sudoku(array=deepcopy(self.array))
 
-    def get_possibles(self, rows, columns):
-        return self._possibles[rows, columns]
-
-    def get_possibles_numbers(self, rows, columns):
-        return filter_zeros_from_vector(self.get_possibles(rows, columns))
-
-    def set_possibles(self, rows, columns, numbers, values):
-        self._possibles[rows, columns, numbers] = values
-
-    def set_possibles_sqrs(self, rows, columns, numbers, values):
-        for row, col, number in zip(rows, columns, numbers):
-            self._possibles[SQUARE_MAPPING[row], SQUARE_MAPPING[col], number] = EMPTY
-
     def get_most_promising_cell(self) -> np.ndarray:
-        return find_the_least_occuring_element_in_matrix(self._possibles)
+        return find_least_filled_place_in_matrix(self._possibles.matrix)
 
-    def get_sudoku_combinations(self, row, column, values):
+    def get_possible_numbers(self, row: int, col: int) -> np.ndarray:
+        return self._possibles.get_not_empty_items(row, col)
+
+    def get_sudoku_combinations(self, row: int, column: int, values: np.ndarray):
         combinations = get_matrix_combinations(self.array, row, column, values)
         return [Sudoku(combination) for combination in combinations]
 
-    def update_possibilities(self):
-        self.set_possibles(ALL, self.filled_columns, self.filled_numbers, EMPTY)
-        self.set_possibles(self.filled_rows, ALL, self.filled_numbers, EMPTY)
-        self.set_possibles(self.filled_rows, self.filled_columns, ALL, EMPTY)
-        self.set_possibles_sqrs(self.filled_rows, self.filled_columns, self.filled_numbers, EMPTY)
+    def update(self) -> None:
+        self._possibles.update(self.filled_rows, self.filled_columns, self.filled_numbers)
 
     def find_sole_candidates(self) -> np.ndarray:
-        self.update_possibilities()
-        sole_candidates_rows = find_unique_number(self._possibles, Axis.row)
-        sole_candidates_cols = find_unique_number(self._possibles, Axis.column)
-        sole_candidates_nbrs = find_unique_number(self._possibles, Axis.number)
-
-        return np.hstack([sole_candidates_rows, sole_candidates_cols, sole_candidates_nbrs])
+        self.update()
+        return self._possibles.find_sole_candidates()

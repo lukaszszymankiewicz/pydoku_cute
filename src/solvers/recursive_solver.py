@@ -11,8 +11,8 @@ def recursive_solver(sudoku):
 
         if not sudoku.is_solved:
             cell_row, cell_col = sudoku.get_most_promising_cell()
-            numbers = sudoku.get_possibles_numbers(cell_row, cell_col)
-            new_sudokus = sudoku.get_sudoku_combinations(cell_row, cell_col, numbers)
+            possible_number = sudoku.get_possible_numbers(cell_row, cell_col)
+            new_sudokus = sudoku.get_sudoku_combinations(cell_row, cell_col, possible_number)
             sudokus.extend(new_sudokus)
 
         else:
