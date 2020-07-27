@@ -1,14 +1,12 @@
+from copy import deepcopy
+
 import numpy as np
 
-from src.objects.utils import (
-    Axis,
-    find_least_filled_place_in_matrix,
-    get_matrix_combinations,
-    find_unique_number,
-)
+from src.objects.utils import (Axis, find_least_filled_place_in_matrix,
+                               find_unique_number, get_matrix_combinations)
+from src.static.constants import ALL, EMPTY, NUMBERS_TYPE
+
 from .possibles_matrix import PossiblesMatrix
-from src.static.constants import NUMBERS_TYPE, ALL, EMPTY
-from copy import deepcopy
 
 
 class Sudoku:

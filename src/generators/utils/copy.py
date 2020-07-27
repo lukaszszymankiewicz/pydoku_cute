@@ -1,4 +1,5 @@
 from copy import deepcopy
+
 from src.objects.sudoku import Sudoku
 
 

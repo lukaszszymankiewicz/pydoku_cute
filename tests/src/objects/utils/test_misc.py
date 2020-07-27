@@ -1,10 +1,8 @@
 import pytest
-
-from numpy import array
 from numpy import all as numpy_all
+from numpy import array
 
-
-from src.objects.utils.misc import replace_values, find_unique_number
+from src.objects.utils.misc import find_unique_number, replace_values
 
 
 def test_replace_values_works_properly():
@@ -22,16 +20,16 @@ def test_replace_values_works_properly():
 
 
 @pytest.mark.parametrize(
-        "vector,expected_result",
-        [
-            (array([0, 0, 0, 0]), array([])),
-            (array([1, 0, 0, 0]), array([0])),
-            (array([0, 2, 0, 0]), array([1])),
-            (array([0, 0, 3, 0]), array([2])),
-            (array([0, 0, 0, 4]), array([3])),
-            (array([1, 2, 0, 0]), array([])),
-        ]
-    )
+    "vector,expected_result",
+    [
+        (array([0, 0, 0, 0]), array([])),
+        (array([1, 0, 0, 0]), array([0])),
+        (array([0, 2, 0, 0]), array([1])),
+        (array([0, 0, 3, 0]), array([2])),
+        (array([0, 0, 0, 4]), array([3])),
+        (array([1, 2, 0, 0]), array([])),
+    ],
+)
 def test_find_unique_number_works_properly_for_vector(vector, expected_result):
     # WHEN
     unique_numbers = find_unique_number(array=vector, axis=0)
@@ -41,31 +39,31 @@ def test_find_unique_number_works_properly_for_vector(vector, expected_result):
 
 
 @pytest.mark.parametrize(
-        "matrix,expected_result",
-        [
-            (array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([]), array([]))),
-            (array([[1, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([0]))),
-            (array([[0, 2, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([1]))),
-            (array([[0, 0, 3], [0, 0, 0], [0, 0, 0]]), (array([0]), array([2]))),
-            (array([[0, 0, 0], [4, 0, 0], [0, 0, 0]]), (array([1]), array([0]))),
-            (array([[0, 0, 0], [0, 5, 0], [0, 0, 0]]), (array([1]), array([1]))),
-            (array([[0, 0, 0], [0, 0, 6], [0, 0, 0]]), (array([1]), array([2]))),
-            (array([[0, 0, 0], [0, 0, 0], [7, 0, 0]]), (array([2]), array([0]))),
-            (array([[0, 0, 0], [0, 0, 0], [0, 8, 0]]), (array([2]), array([1]))),
-            (array([[0, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
-            (array([[1, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([0, 2]))),
-            (array([[0, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([1, 2]))),
-            (array([[0, 0, 0], [1, 0, 0], [0, 0, 9]]), (array([1, 2]), array([0, 2]))),
-            (array([[0, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([1, 2]), array([1, 2]))),
-            (array([[1, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
-            (array([[1, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([0, 1, 2]), array([0, 1, 2]))),
-            (array([[0, 0, 0], [1, 2, 0], [0, 0, 9]]), (array([2]), array([2]))),
-            (array([[1, 0, 3], [0, 0, 0], [1, 0, 9]]), (array([]), array([]))),
-            (array([[1, 0, 0], [0, 0, 3], [1, 0, 9]]), (array([0, 1]), array([0, 2]))),
-            (array([[0, 0, 0], [0, 0, 3], [0, 0, 9]]), (array([1, 2]), array([2, 2]))),
-            (array([[0, 0, 3], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([2, 2]))),
-        ]
-    )
+    "matrix,expected_result",
+    [
+        (array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([]), array([]))),
+        (array([[1, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([0]))),
+        (array([[0, 2, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([1]))),
+        (array([[0, 0, 3], [0, 0, 0], [0, 0, 0]]), (array([0]), array([2]))),
+        (array([[0, 0, 0], [4, 0, 0], [0, 0, 0]]), (array([1]), array([0]))),
+        (array([[0, 0, 0], [0, 5, 0], [0, 0, 0]]), (array([1]), array([1]))),
+        (array([[0, 0, 0], [0, 0, 6], [0, 0, 0]]), (array([1]), array([2]))),
+        (array([[0, 0, 0], [0, 0, 0], [7, 0, 0]]), (array([2]), array([0]))),
+        (array([[0, 0, 0], [0, 0, 0], [0, 8, 0]]), (array([2]), array([1]))),
+        (array([[0, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
+        (array([[1, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([0, 2]))),
+        (array([[0, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([1, 2]))),
+        (array([[0, 0, 0], [1, 0, 0], [0, 0, 9]]), (array([1, 2]), array([0, 2]))),
+        (array([[0, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([1, 2]), array([1, 2]))),
+        (array([[1, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
+        (array([[1, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([0, 1, 2]), array([0, 1, 2]))),
+        (array([[0, 0, 0], [1, 2, 0], [0, 0, 9]]), (array([2]), array([2]))),
+        (array([[1, 0, 3], [0, 0, 0], [1, 0, 9]]), (array([]), array([]))),
+        (array([[1, 0, 0], [0, 0, 3], [1, 0, 9]]), (array([0, 1]), array([0, 2]))),
+        (array([[0, 0, 0], [0, 0, 3], [0, 0, 9]]), (array([1, 2]), array([2, 2]))),
+        (array([[0, 0, 3], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([2, 2]))),
+    ],
+)
 def test_find_unique_number_works_properly_for_matrix_for_axis_1(matrix, expected_result):
     # WHEN
     unique_numbers = find_unique_number(array=matrix, axis=1)
@@ -76,31 +74,31 @@ def test_find_unique_number_works_properly_for_matrix_for_axis_1(matrix, expecte
 
 
 @pytest.mark.parametrize(
-        "matrix,expected_result",
-        [
-            (array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([]), array([]))),
-            (array([[1, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([0]))),
-            (array([[0, 2, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([1]))),
-            (array([[0, 0, 3], [0, 0, 0], [0, 0, 0]]), (array([0]), array([2]))),
-            (array([[0, 0, 0], [4, 0, 0], [0, 0, 0]]), (array([1]), array([0]))),
-            (array([[0, 0, 0], [0, 5, 0], [0, 0, 0]]), (array([1]), array([1]))),
-            (array([[0, 0, 0], [0, 0, 6], [0, 0, 0]]), (array([1]), array([2]))),
-            (array([[0, 0, 0], [0, 0, 0], [7, 0, 0]]), (array([2]), array([0]))),
-            (array([[0, 0, 0], [0, 0, 0], [0, 8, 0]]), (array([2]), array([1]))),
-            (array([[0, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
-            (array([[1, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([0, 2]))),
-            (array([[0, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([1, 2]))),
-            (array([[0, 0, 0], [1, 0, 0], [0, 0, 9]]), (array([1, 2]), array([0, 2]))),
-            (array([[0, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([1, 2]), array([1, 2]))),
-            (array([[1, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 0, 2]), array([0, 1, 2]))),
-            (array([[1, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([0, 1, 2]), array([0, 1, 2]))),
-            (array([[0, 0, 0], [1, 2, 0], [0, 0, 9]]), (array([1, 1, 2]), array([0, 1, 2]))),
-            (array([[1, 0, 3], [0, 0, 0], [1, 0, 9]]), (array([]), array([]))),
-            (array([[1, 0, 0], [0, 0, 3], [1, 0, 9]]), (array([]), array([]))),
-            (array([[0, 0, 0], [0, 0, 3], [0, 0, 9]]), (array([]), array([]))),
-            (array([[0, 0, 3], [0, 0, 0], [0, 0, 9]]), (array([]), array([]))),
-        ]
-    )
+    "matrix,expected_result",
+    [
+        (array([[0, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([]), array([]))),
+        (array([[1, 0, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([0]))),
+        (array([[0, 2, 0], [0, 0, 0], [0, 0, 0]]), (array([0]), array([1]))),
+        (array([[0, 0, 3], [0, 0, 0], [0, 0, 0]]), (array([0]), array([2]))),
+        (array([[0, 0, 0], [4, 0, 0], [0, 0, 0]]), (array([1]), array([0]))),
+        (array([[0, 0, 0], [0, 5, 0], [0, 0, 0]]), (array([1]), array([1]))),
+        (array([[0, 0, 0], [0, 0, 6], [0, 0, 0]]), (array([1]), array([2]))),
+        (array([[0, 0, 0], [0, 0, 0], [7, 0, 0]]), (array([2]), array([0]))),
+        (array([[0, 0, 0], [0, 0, 0], [0, 8, 0]]), (array([2]), array([1]))),
+        (array([[0, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([2]), array([2]))),
+        (array([[1, 0, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([0, 2]))),
+        (array([[0, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 2]), array([1, 2]))),
+        (array([[0, 0, 0], [1, 0, 0], [0, 0, 9]]), (array([1, 2]), array([0, 2]))),
+        (array([[0, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([1, 2]), array([1, 2]))),
+        (array([[1, 2, 0], [0, 0, 0], [0, 0, 9]]), (array([0, 0, 2]), array([0, 1, 2]))),
+        (array([[1, 0, 0], [0, 2, 0], [0, 0, 9]]), (array([0, 1, 2]), array([0, 1, 2]))),
+        (array([[0, 0, 0], [1, 2, 0], [0, 0, 9]]), (array([1, 1, 2]), array([0, 1, 2]))),
+        (array([[1, 0, 3], [0, 0, 0], [1, 0, 9]]), (array([]), array([]))),
+        (array([[1, 0, 0], [0, 0, 3], [1, 0, 9]]), (array([]), array([]))),
+        (array([[0, 0, 0], [0, 0, 3], [0, 0, 9]]), (array([]), array([]))),
+        (array([[0, 0, 3], [0, 0, 0], [0, 0, 9]]), (array([]), array([]))),
+    ],
+)
 def test_find_unique_number_works_properly_for_matrix_for_axis_0(matrix, expected_result):
     # GIVEN
     unique_numbers = find_unique_number(array=matrix, axis=0)

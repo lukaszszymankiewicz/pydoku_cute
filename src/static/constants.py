@@ -1,6 +1,5 @@
 import numpy as np
 
-
 EMPTY = 0
 ALL = slice(None, None)
 

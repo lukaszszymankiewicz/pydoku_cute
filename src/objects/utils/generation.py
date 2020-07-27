@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.static.constants import SUDOKU_SIZE, NUMBERS_TYPE, SIDE_SIZE
+from src.static.constants import NUMBERS_TYPE, SIDE_SIZE, SUDOKU_SIZE
 
 
 def generate_empty_possibles_matrix() -> np.ndarray:

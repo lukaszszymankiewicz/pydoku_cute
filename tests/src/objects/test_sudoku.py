@@ -1,5 +1,4 @@
 import numpy as np
-
 import pytest
 
 from src.objects.sudoku import Sudoku
@@ -7,7 +6,7 @@ from src.objects.sudoku import Sudoku
 
 def test_initialization_of_notempty_sudoku_object_returns_proper_object():
     # GIVEN
-    sample_array = np.random.randint(low=0, high=10, size=((9,9)))
+    sample_array = np.random.randint(low=0, high=10, size=((9, 9)))
     expected_dtype = np.uint8
     expected_params = ["array", "_possibles"]
     expected_shape = (9, 9)
@@ -25,14 +24,8 @@ def test_initialization_of_notempty_sudoku_object_returns_proper_object():
 
 def test_where_is_empty_property_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [1, 2, 3],
-            [0, 2, 3],
-            [1, 2, 0],
-        ]
-    )
-    expected_where_is_empty = np.array([[1, 0], [2,2]])
+    sample_array = np.array([[1, 2, 3], [0, 2, 3], [1, 2, 0],])
+    expected_where_is_empty = np.array([[1, 0], [2, 2]])
 
     # WHEN
     sudoku = Sudoku(sample_array)
@@ -43,14 +36,8 @@ def test_where_is_empty_property_works_properly():
 
 def test_where_is_filled_property_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 2, 0],
-            [1, 0, 0],
-        ]
-    )
-    expected_where_is_empty = np.array([[1, 1], [2,0]])
+    sample_array = np.array([[0, 0, 0], [0, 2, 0], [1, 0, 0],])
+    expected_where_is_empty = np.array([[1, 1], [2, 0]])
 
     # WHEN
     sudoku = Sudoku(sample_array)
@@ -61,13 +48,7 @@ def test_where_is_filled_property_works_properly():
 
 def test_where_is_solved_property_works_properly_for_not_solved_sudoku():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 2, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 2, 0], [1, 0, 0],])
     expected_result = False
 
     # WHEN
@@ -79,13 +60,7 @@ def test_where_is_solved_property_works_properly_for_not_solved_sudoku():
 
 def test_where_is_solved_property_works_properly_for_solved_sudoku():
     # GIVEN
-    sample_array = np.array(
-        [
-            [1, 2, 3],
-            [3, 1, 2],
-            [2, 3, 1],
-        ]
-    )
+    sample_array = np.array([[1, 2, 3], [3, 1, 2], [2, 3, 1],])
     expected_result = True
 
     # WHEN
@@ -97,14 +72,8 @@ def test_where_is_solved_property_works_properly_for_solved_sudoku():
 
 def test_filled_rows_property_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 2, 0],
-            [1, 0, 0],
-        ]
-    )
-    expected_filled_rows = np.array([1,2])
+    sample_array = np.array([[0, 0, 0], [0, 2, 0], [1, 0, 0],])
+    expected_filled_rows = np.array([1, 2])
 
     # WHEN
     sudoku = Sudoku(sample_array)
@@ -115,13 +84,7 @@ def test_filled_rows_property_works_properly():
 
 def test_filled_columns_property_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 2, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 2, 0], [1, 0, 0],])
     expected_filled_columns = np.array([1, 0])
 
     # WHEN
@@ -133,13 +96,7 @@ def test_filled_columns_property_works_properly():
 
 def test_filled_numbers_property_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 5, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 5, 0], [1, 0, 0],])
     expected_filled_numbers = np.array([5, 1])
 
     # WHEN
@@ -151,13 +108,7 @@ def test_filled_numbers_property_works_properly():
 
 def test_copy_funkction_works_properly():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 5, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 5, 0], [1, 0, 0],])
     sample_sudoku = Sudoku(sample_array)
 
     # WHEN
@@ -170,13 +121,7 @@ def test_copy_funkction_works_properly():
 
 def test_copy_function_return_independent_copy():
     # GIVEN
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 5, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 5, 0], [1, 0, 0],])
     sample_sudoku = Sudoku(sample_array)
 
     # WHEN
@@ -299,7 +244,7 @@ def test_get_most_promising_cell_works_properly():
         ((8, 6), np.array([1, 2, 3, 4, 5, 6])),
         ((8, 7), np.array([1, 2, 3, 4, 5, 6])),
         ((8, 8), np.array([])),
-    ]
+    ],
 )
 def test_get_possible_numbers_works_properly(indices, expected_numbers):
     # GIVEN
@@ -327,39 +272,20 @@ def test_get_possible_numbers_works_properly(indices, expected_numbers):
 
 
 def test_get_sudoku_combinations_works_properly():
-    sample_array = np.array(
-        [
-            [0, 0, 0],
-            [0, 5, 0],
-            [1, 0, 0],
-        ]
-    )
+    sample_array = np.array([[0, 0, 0], [0, 5, 0], [1, 0, 0],])
     sudoku = Sudoku(sample_array)
     row = 0
     col = 0
-    values = np.array([1,2])
+    values = np.array([1, 2])
 
     expected_sudoku_combinations = [
-            Sudoku(np.array(
-                [
-                    [1, 0, 0],
-                    [0, 5, 0],
-                    [1, 0, 0],
-                ]
-            )),
-            Sudoku(np.array(
-                [
-                    [2, 0, 0],
-                    [0, 5, 0],
-                    [1, 0, 0],
-                ]
-            )),
+        Sudoku(np.array([[1, 0, 0], [0, 5, 0], [1, 0, 0],])),
+        Sudoku(np.array([[2, 0, 0], [0, 5, 0], [1, 0, 0],])),
     ]
-    
+
     # WHEN
     sudoku_combinations = sudoku.get_sudoku_combinations(row, col, values)
 
     # THEN
     for expected, generated in zip(expected_sudoku_combinations, sudoku_combinations):
         assert np.all(expected.array == generated.array)
-

@@ -20,9 +20,7 @@ def find_least_filled_place_in_matrix(matrix: np.ndarray) -> np.ndarray:
     return indices[0], indices[1]
 
 
-def get_matrix_combinations(
-    matrix: np.ndarray, row: int, col: int, values: np.ndarray
-):
+def get_matrix_combinations(matrix: np.ndarray, row: int, col: int, values: np.ndarray):
     matrix_combinations = []
 
     for value in values:

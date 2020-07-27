@@ -1,10 +1,10 @@
 import numpy as np
 
-from src.solvers.recursive_solver import recursive_solver
-from src.solvers.naive_solver import naive_solver
-from src.objects.sudoku import Sudoku
-from src.static.constants import SUDOKU_NUMBERS, SUDOKU_SIZE, SIDE_SIZE, EMPTY
 from src.generators.utils import get_random_indices
+from src.objects.sudoku import Sudoku
+from src.solvers.naive_solver import naive_solver
+from src.solvers.recursive_solver import recursive_solver
+from src.static.constants import EMPTY, SIDE_SIZE, SUDOKU_NUMBERS, SUDOKU_SIZE
 
 
 def recursive_conclusive_generator():

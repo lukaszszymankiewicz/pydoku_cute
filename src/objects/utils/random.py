@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.static.constants import SUDOKU_NUMBERS, SQUARE_NUMBERS, SUDOKU_INDICES
+from src.static.constants import SQUARE_NUMBERS, SUDOKU_INDICES, SUDOKU_NUMBERS
 
 
 def generate_random_indices_of_nonzero_elements(array: np.ndarray, sample_size: int) -> np.ndarray:

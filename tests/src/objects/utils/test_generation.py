@@ -19,7 +19,7 @@ def test_generate_empty_possibles_matrix_returns_array_with_proper_dtype():
     expected_dtype = np.uint8
 
     # WHEN
-    dtype = generate_empty_possibles_matrix().dtype 
+    dtype = generate_empty_possibles_matrix().dtype
 
     # THEN
     assert dtype == expected_dtype
