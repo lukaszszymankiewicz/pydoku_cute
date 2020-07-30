@@ -2,7 +2,7 @@ from random import shuffle
 
 import numpy as np
 
-from .naive_solver import naive_solver
+from src.solvers import naive_solver
 
 
 def recursive_solver(sudoku):

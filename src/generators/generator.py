@@ -1,13 +1,12 @@
 import numpy as np
 
-from src.generators.utils import get_random_indices
-from src.objects.sudoku import Sudoku
-from src.solvers.naive_solver import naive_solver
-from src.solvers.recursive_solver import recursive_solver
+from src.objects import Sudoku
+from src.solvers import recursive_solver, naive_solver
 from src.static.constants import EMPTY, SIDE_SIZE, SUDOKU_NUMBERS, SUDOKU_SIZE
+from src.generators.utils import Difficult, get_random_indices, empty_cells_by_difficult
 
 
-def recursive_conclusive_generator():
+def generate(difficult: str = Difficult.easy):
     """
     Generates random sudoku using recursion.
 
@@ -16,16 +15,29 @@ def recursive_conclusive_generator():
     And, finally, number by number is taken from array till it results in sudoku with only one
     answer.
     """
+    # generating empty sudoku
     sudoku = Sudoku(np.zeros(SUDOKU_SIZE))
 
+    # filling empty sudoku with 9 numbers
     random_indices = get_random_indices(sudoku.where_is_empty, SIDE_SIZE)
     sudoku[random_indices] = SUDOKU_NUMBERS
+
+    # finding solution
     solved_sudoku = recursive_solver(sudoku)
 
+    # emptying sudoku till it have only onve conclusive solution
     while True:
-        if naive_solver(solved_sudoku.copy()).is_solved == True:
+        if naive_solver(solved_sudoku.copy()).is_solved:
             random_indices = get_random_indices(solved_sudoku.where_is_filled)
             last_step_sudoku = solved_sudoku.copy()
             solved_sudoku[random_indices] = EMPTY
         else:
-            return last_step_sudoku
+            break
+
+    # refinining the sudoku by its difficult
+    random_indices = get_random_indices(
+        matrix=last_step_sudoku.where_is_filled,
+        sample_size=empty_cells_by_difficult[difficult],
+    )
+    last_step_sudoku[random_indices] = EMPTY
+    return last_step_sudoku
