@@ -1,1 +1,1 @@
-from .helpers import sudoku_is_valid 
+from .helpers import sudoku_is_valid

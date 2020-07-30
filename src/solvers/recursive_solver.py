@@ -1,5 +1,7 @@
-import numpy as np
 from random import shuffle
+
+import numpy as np
+
 from .naive_solver import naive_solver
 
 

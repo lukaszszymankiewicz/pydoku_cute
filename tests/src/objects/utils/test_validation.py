@@ -49,4 +49,3 @@ def test_sudoku_is_valid_validates_invalid_sudoku():
 
     # THEN
     assert validation_result == expected_validation_result
-

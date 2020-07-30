@@ -30,7 +30,7 @@ class PossiblesMatrix:
 
     @property
     def is_empty(self):
-        return self.matrix.sum() == 0 
+        return self.matrix.sum() == 0
 
     def get_not_empty_items(self, row, col):
         return filter_zeros_from_vector(self.matrix[row, col])
