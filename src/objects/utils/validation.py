@@ -2,14 +2,11 @@ import numpy as np
 
 
 def sudoku_is_valid(array: np.ndarray) -> bool:
+    """
+    Tries to find if sudoku array is valid by iterating its rows and checking
+    if there is some duplicates in values (if so the array is invalid).
+    """
     for row in array:
-        row = row[row > 0]
-        if np.any(np.bincount(row) > 1):
+        if len(set(row)) != len(row):
             return False
-
-    for col in array.T:
-        col = col[col > 0]
-        if np.any(np.bincount(col) > 1):
-            return False
-
     return True

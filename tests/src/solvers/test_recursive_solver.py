@@ -2,10 +2,25 @@ import pytest
 
 from src.static.file_loaders import load_sample_unsolved_sudoku
 from src.solvers.recursive_solver import recursive_solver
+from tests.conftest import sudoku_is_valid
+from src.generators.recursive_generator import recursive_conclusive_generator
 from src.objects.sudoku import Sudoku
 
 
-@pytest.mark.parametrize("probe", list(range(101)))
+@pytest.mark.parametrize("probe", list(range(100)))
+def test_recursive_solver_works_for_generated_cases(probe):
+    # GIVEN
+    sudoku = recursive_conclusive_generator()
+
+    # WHEN
+    solved_sudoku = recursive_solver(sudoku)
+
+    # THEN
+    assert solved_sudoku.is_solved == True
+    assert sudoku_is_valid(solved_sudoku.array) == True
+
+
+@pytest.mark.parametrize("probe", list(range(100)))
 def test_recursive_solver_works_for_simples_cases(probe):
     # GIVEN
     sudoku = Sudoku(load_sample_unsolved_sudoku(probe))
@@ -15,15 +30,4 @@ def test_recursive_solver_works_for_simples_cases(probe):
 
     # THEN
     assert solved_sudoku.is_solved == True
-
-
-@pytest.mark.parametrize("probe", list(range(101)))
-def test_recursive_solver_works_for_simples_cases(probe):
-    # GIVEN
-    sudoku = Sudoku(load_sample_unsolved_sudoku(probe))
-
-    # WHEN
-    solved_sudoku = recursive_solver(sudoku)
-
-    # THEN
-    assert solved_sudoku.is_solved == True
+    assert sudoku_is_valid(solved_sudoku.array) == True

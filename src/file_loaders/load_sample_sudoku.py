@@ -9,10 +9,3 @@ def load_sample_unsolved_sudoku(number: int):
         return np.load(UNSOLVED_SUDOKU_PATH + str(number) + ".npy")
     except FileNotFoundError:
         raise FileNotFoundError("sample of sudoku you are looking for cannot be found")
-
-
-def load_sample_solved_sudoku(number: int):
-    try:
-        return np.load(SOLVED_SUDOKU_PATH + str(number) + ".npy")
-    except FileNotFoundError:
-        raise FileNotFoundError("sample of sudoku you are looking for cannot be found")

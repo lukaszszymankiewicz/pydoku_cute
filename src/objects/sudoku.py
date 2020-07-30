@@ -5,7 +5,6 @@ import numpy as np
 from src.objects.utils import (
     Axis,
     find_least_filled_place_in_matrix,
-    find_unique_number,
     get_matrix_combinations,
     sudoku_is_valid,
 )
@@ -57,6 +56,10 @@ class Sudoku:
     @property
     def is_solvable(self):
         return np.sum(self._possibles.matrix) != 0
+
+    @property
+    def is_valid(self):
+        return sudoku_is_valid(self.array)
 
     def copy(self):
         return Sudoku(array=deepcopy(self.array))

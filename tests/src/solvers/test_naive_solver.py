@@ -1,12 +1,10 @@
 import pytest
-import numpy as np
-from copy import deepcopy
 
 from src.static.file_loaders import load_sample_unsolved_sudoku
 from src.solvers.naive_solver import naive_solver
-from src.objects.sudoku import Sudoku
 from tests.conftest import sudoku_is_valid
 from src.generators.recursive_generator import recursive_conclusive_generator
+from src.objects.sudoku import Sudoku
 
 
 @pytest.mark.parametrize("probe", list(range(100)))
