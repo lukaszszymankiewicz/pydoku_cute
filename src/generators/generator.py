@@ -36,8 +36,7 @@ def generate(difficult: str = Difficult.easy):
 
     # refinining the sudoku by its difficult
     random_indices = get_random_indices(
-        matrix=last_step_sudoku.where_is_filled,
-        sample_size=empty_cells_by_difficult[difficult],
+        matrix=last_step_sudoku.where_is_filled, sample_size=empty_cells_by_difficult[difficult],
     )
     last_step_sudoku[random_indices] = EMPTY
     return last_step_sudoku

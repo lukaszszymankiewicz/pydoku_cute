@@ -71,4 +71,3 @@ def test_recursive_solver_works_for_generated_impossible_cases(probe):
     # THEN
     assert solved_sudoku.is_solved == True
     assert sudoku_is_valid(solved_sudoku.array) == True
-
