@@ -23,10 +23,9 @@ def recursive_conclusive_generator():
     solved_sudoku = recursive_solver(sudoku)
 
     while True:
-        last_step_sudoku = solved_sudoku.copy()
-        random_indices = get_random_indices(last_step_sudoku.where_is_filled)
-        last_step_sudoku[random_indices] = EMPTY
-
-        if not naive_solver(last_step_sudoku).is_solved:
-            return solved_sudoku
-        solved_sudoku[random_indices] = EMPTY
+        if naive_solver(solved_sudoku.copy()).is_solved == True:
+            random_indices = get_random_indices(solved_sudoku.where_is_filled)
+            last_step_sudoku = solved_sudoku.copy()
+            solved_sudoku[random_indices] = EMPTY
+        else:
+            return last_step_sudoku

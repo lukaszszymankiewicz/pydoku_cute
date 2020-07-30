@@ -2,8 +2,13 @@ from copy import deepcopy
 
 import numpy as np
 
-from src.objects.utils import (Axis, find_least_filled_place_in_matrix,
-                               find_unique_number, get_matrix_combinations)
+from src.objects.utils import (
+    Axis,
+    find_least_filled_place_in_matrix,
+    find_unique_number,
+    get_matrix_combinations,
+    sudoku_is_valid,
+)
 from src.static.constants import ALL, EMPTY, NUMBERS_TYPE
 
 from .possibles_matrix import PossiblesMatrix
@@ -48,6 +53,10 @@ class Sudoku:
     @property
     def filled_numbers(self):
         return self.array[self.filled_rows, self.filled_columns] - 1
+
+    @property
+    def is_solvable(self):
+        return np.sum(self._possibles.matrix) != 0
 
     def copy(self):
         return Sudoku(array=deepcopy(self.array))

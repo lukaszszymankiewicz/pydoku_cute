@@ -4,6 +4,7 @@ from src.objects import Sudoku
 
 
 def naive_solver(sudoku: Sudoku) -> np.ndarray:
+
     while not sudoku.is_solved:
         candidates_rows, candidates_cols, candidates_nbrs = sudoku.find_sole_candidates()
 

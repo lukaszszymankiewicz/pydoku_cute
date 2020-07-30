@@ -15,3 +15,15 @@ def test_recursive_solver_works_for_simples_cases(probe):
 
     # THEN
     assert solved_sudoku.is_solved == True
+
+
+@pytest.mark.parametrize("probe", list(range(101)))
+def test_recursive_solver_works_for_simples_cases(probe):
+    # GIVEN
+    sudoku = Sudoku(load_sample_unsolved_sudoku(probe))
+
+    # WHEN
+    solved_sudoku = recursive_solver(sudoku)
+
+    # THEN
+    assert solved_sudoku.is_solved == True

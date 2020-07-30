@@ -6,6 +6,8 @@ from .random import (generate_bool,
                      generate_random_indices_of_nonzero_elements,
                      generate_random_order, generate_random_order_of_groups)
 from .vector import filter_zeros_from_vector
+from .validation import sudoku_is_valid
+
 
 __all__ = [
     "Axis",
@@ -19,4 +21,5 @@ __all__ = [
     "generate_bool",
     "generate_random_order",
     "generate_random_order_of_groups",
+    "sudoku_is_valid",
 ]
