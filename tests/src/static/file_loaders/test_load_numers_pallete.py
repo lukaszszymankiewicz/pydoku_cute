@@ -18,4 +18,3 @@ def test_load_numbers_pallete_return_numpy_archive_with_every_number():
         assert numbers_pallete[expected_number].shape == expected_shape
         assert numbers_pallete[expected_number].dtype == expected_dtype
         assert type(numbers_pallete[expected_number]) == expected_type
-

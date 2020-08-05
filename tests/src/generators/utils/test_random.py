@@ -1,5 +1,6 @@
-from numpy import array, hstack, all, vstack
 import pytest
+from numpy import all, array, hstack, vstack
+
 from src.generators.utils.random import get_random_indices
 
 

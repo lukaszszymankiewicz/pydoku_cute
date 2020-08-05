@@ -1,9 +1,10 @@
 import numpy as np
 
+from src.generators.utils import (Difficult, empty_cells_by_difficult,
+                                  get_random_indices)
 from src.objects import Sudoku
-from src.solvers import recursive_solver, naive_solver
+from src.solvers import naive_solver, recursive_solver
 from src.static.constants import EMPTY, SIDE_SIZE, SUDOKU_NUMBERS, SUDOKU_SIZE
-from src.generators.utils import Difficult, get_random_indices, empty_cells_by_difficult
 
 
 def generate(difficult: str = Difficult.easy):

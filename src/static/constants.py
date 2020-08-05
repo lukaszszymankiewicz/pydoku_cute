@@ -1,5 +1,4 @@
-from numpy import array
-from numpy import uint8
+from numpy import array, uint8
 
 # types
 NUMBERS_TYPE = uint8
@@ -42,4 +41,4 @@ CELL_SIZE = 100
 HARD_LINE_WIDTH = 8
 MEDIUM_LINE_WIDTH = 5
 LIGHT_LINE_WIDTH = 2
-FRAME_SIZE = [2*HARD_LINE_WIDTH + 2*MEDIUM_LINE_WIDTH + 6*LIGHT_LINE_WIDTH + 9*CELL_SIZE]
+FRAME_SIZE = [2 * HARD_LINE_WIDTH + 2 * MEDIUM_LINE_WIDTH + 6 * LIGHT_LINE_WIDTH + 9 * CELL_SIZE]

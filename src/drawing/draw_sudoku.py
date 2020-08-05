@@ -1,9 +1,10 @@
-from src.objects.sudoku import Sudoku
-from src.static.file_loaders import load_numbers_pallete, load_number, load_empty_frame
 from src.drawing.utils import calculate_image_place, convert_array_to_png_image
+from src.objects.sudoku import Sudoku
+from src.static.file_loaders import (load_empty_frame, load_number,
+                                     load_numbers_pallete)
 
 
-def draw_sudoku(sudoku: Sudoku, path:str):
+def draw_sudoku(sudoku: Sudoku, path: str):
     frame = load_empty_frame()
     numbers_pallete = load_numbers_pallete()
 

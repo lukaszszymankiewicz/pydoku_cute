@@ -1,6 +1,5 @@
-import pytest
-
 import numpy as np
+import pytest
 
 from src.static.file_loaders import load_sample_unsolved_sudoku
 

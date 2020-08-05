@@ -1,11 +1,11 @@
 import pytest
 
-from src.static.file_loaders import load_sample_unsolved_sudoku
-from src.solvers.recursive_solver import recursive_solver
-from tests.conftest import sudoku_is_valid
 from src.generators import generate
-from src.objects.sudoku import Sudoku
 from src.generators.utils import Difficult
+from src.objects.sudoku import Sudoku
+from src.solvers.recursive_solver import recursive_solver
+from src.static.file_loaders import load_sample_unsolved_sudoku
+from tests.conftest import sudoku_is_valid
 
 
 @pytest.mark.parametrize("probe", list(range(100)))

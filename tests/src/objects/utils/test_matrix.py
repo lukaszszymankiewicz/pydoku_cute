@@ -2,7 +2,8 @@ import pytest
 from numpy import all as numpy_all
 from numpy import array
 
-from src.objects.utils.matrix import find_least_filled_place_in_matrix, get_matrix_combinations
+from src.objects.utils.matrix import (find_least_filled_place_in_matrix,
+                                      get_matrix_combinations)
 
 
 def test_find_the_least_occuring_element_in_matrix_works_properly_for_simple_case():

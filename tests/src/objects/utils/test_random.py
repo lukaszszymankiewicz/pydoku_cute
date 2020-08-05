@@ -2,12 +2,9 @@ import numpy as np
 import pytest
 
 from src.objects.utils.random import (
-    generate_bool,
-    generate_numbers_mapping,
-    generate_random_indices_of_nonzero_elements,
-    generate_random_order,
-    generate_random_order_of_groups,
-)
+    generate_bool, generate_numbers_mapping,
+    generate_random_indices_of_nonzero_elements, generate_random_order,
+    generate_random_order_of_groups)
 
 
 def test_get_random_nonzero_elements_of_array_return_proper_number_of_elements():

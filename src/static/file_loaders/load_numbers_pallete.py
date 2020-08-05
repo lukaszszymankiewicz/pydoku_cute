@@ -1,6 +1,5 @@
 import numpy as np
 
-
 NUMBERS_PALLETE_PATH = "src/static/images/numbers_pallete.npz"
 
 

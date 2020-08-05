@@ -1,6 +1,5 @@
 from numpy import load
 
-
 EMPTY_FRAME_PATH = "src/static/images/empty_frame.npz"
 
 

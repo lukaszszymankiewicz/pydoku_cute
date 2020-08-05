@@ -1,7 +1,8 @@
 from os import remove
-
 from pathlib import Path
-from numpy import zeros, uint8
+
+from numpy import uint8, zeros
+
 from src.drawing.utils.converters import convert_array_to_png_image
 
 

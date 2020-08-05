@@ -2,12 +2,8 @@ from copy import deepcopy
 
 import numpy as np
 
-from src.objects.utils import (
-    Axis,
-    find_least_filled_place_in_matrix,
-    get_matrix_combinations,
-    sudoku_is_valid,
-)
+from src.objects.utils import (Axis, find_least_filled_place_in_matrix,
+                               get_matrix_combinations, sudoku_is_valid)
 from src.static.constants import ALL, EMPTY, NUMBERS_TYPE
 
 from .possibles_matrix import PossiblesMatrix

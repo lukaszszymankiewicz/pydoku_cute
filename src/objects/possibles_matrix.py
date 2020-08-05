@@ -1,11 +1,8 @@
 import numpy as np
 
-from src.objects.utils import (
-    Axis,
-    filter_zeros_from_vector,
-    find_unique_number,
-    generate_empty_possibles_matrix,
-)
+from src.objects.utils import (Axis, filter_zeros_from_vector,
+                               find_unique_number,
+                               generate_empty_possibles_matrix)
 from src.static.constants import ALL, EMPTY, NUMBERS_TYPE, SQUARE_MAPPING
 
 
