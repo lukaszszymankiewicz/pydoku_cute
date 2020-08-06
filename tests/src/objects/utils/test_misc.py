@@ -2,21 +2,7 @@ import pytest
 from numpy import all as numpy_all
 from numpy import array
 
-from src.objects.utils.misc import find_unique_number, replace_values
-
-
-def test_replace_values_works_properly():
-    # GIVEN
-    sample_array = array([1, 2, 3, 4])
-    sample_map = {1: 2, 2: 3, 3: 4, 4: 5}
-    expected_array = array([2, 3, 4, 5])
-
-    # WHEN
-    array_after_replacing = replace_values(sample_array, sample_map)
-
-    # THEN
-    assert numpy_all(array_after_replacing == expected_array)
-    assert array_after_replacing.shape == expected_array.shape
+from src.objects.utils.misc import find_unique_number
 
 
 @pytest.mark.parametrize(

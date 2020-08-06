@@ -1,8 +1,9 @@
-import time
-
 from src.drawing import draw_sudoku
-from src.generators.generator import generate
+from src.generators.utils import Difficult
+from src.generators import generate
 
 
-sudoku = generate()
-result = draw_sudoku(sudoku, path="./result_yxx.png")
+sudoku, solved_sudoku = generate(Difficult.hard)
+
+draw_sudoku(sudoku, path="./sudoku.png")
+draw_sudoku(solved_sudoku, path="./sudoku_solved.png")

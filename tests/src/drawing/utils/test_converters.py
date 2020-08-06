@@ -13,7 +13,7 @@ def test_convert_array_to_png_image_works_properly():
     expected_suffix = ".png"
 
     # WHEN
-    convert_array_to_png_image(array=sample_array, file_path=sample_path)
+    convert_array_to_png_image(sample_array, sample_path)
 
     # THEN
     assert Path(sample_path).suffix == expected_suffix

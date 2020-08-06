@@ -1,11 +1,11 @@
 from random import shuffle
 
-import numpy as np
+from src.objects.sudoku import Sudoku
 
 from src.solvers import naive_solver
 
 
-def recursive_solver(sudoku):
+def recursive_solver(sudoku: Sudoku) -> Sudoku:
     sudokus = [sudoku]
 
     while True:

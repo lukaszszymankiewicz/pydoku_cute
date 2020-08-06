@@ -1,13 +1,16 @@
-import numpy as np
-
-from src.generators.utils import (Difficult, empty_cells_by_difficult,
-                                  get_random_indices)
+from numpy import zeros
+from typing import Tuple
+from src.generators.utils import (
+    Difficult,
+    empty_cells_by_difficult,
+    get_random_indices,
+)
 from src.objects import Sudoku
 from src.solvers import naive_solver, recursive_solver
 from src.static.constants import EMPTY, SIDE_SIZE, SUDOKU_NUMBERS, SUDOKU_SIZE
 
 
-def generate(difficult: str = Difficult.easy):
+def generate(difficult: str = Difficult.easy) -> Tuple[Sudoku, Sudoku]:
     """
     Generates random sudoku using recursion.
 
@@ -17,14 +20,15 @@ def generate(difficult: str = Difficult.easy):
     answer.
     """
     # generating empty sudoku
-    sudoku = Sudoku(np.zeros(SUDOKU_SIZE))
+    sudoku = Sudoku(zeros(SUDOKU_SIZE))
 
     # filling empty sudoku with 9 numbers
     random_indices = get_random_indices(sudoku.where_is_empty, SIDE_SIZE)
     sudoku[random_indices] = SUDOKU_NUMBERS
 
     # finding solution
-    solved_sudoku = recursive_solver(sudoku)
+    filled_sudoku = recursive_solver(sudoku)
+    solved_sudoku = filled_sudoku.copy()
 
     # emptying sudoku till it have only onve conclusive solution
     while True:
@@ -40,4 +44,5 @@ def generate(difficult: str = Difficult.easy):
         matrix=last_step_sudoku.where_is_filled, sample_size=empty_cells_by_difficult[difficult],
     )
     last_step_sudoku[random_indices] = EMPTY
-    return last_step_sudoku
+
+    return last_step_sudoku, filled_sudoku
