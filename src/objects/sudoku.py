@@ -24,6 +24,7 @@ class Sudoku:
     This object represents 9x9 array.
 
     """
+
     __slots__ = ["array", "_possibles"]
 
     def __init__(self, array: Matrix):

@@ -1,4 +1,4 @@
-from src.static.constants import NUMBERS_TYPE 
+from src.static.constants import NUMBERS_TYPE
 from src.static.types import Cube, Scalar, Matrix
 from numpy import where, nonzero
 

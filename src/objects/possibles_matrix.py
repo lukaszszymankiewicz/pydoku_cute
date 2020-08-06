@@ -19,6 +19,7 @@ class PossiblesMatrix:
     Placing new number in sudoku array updateds its possibles matrix (cause every new numbers
     "blocks" other number in its row, cols and square).
     """
+
     __slots__ = ["matrix"]
 
     def __init__(self) -> None:
@@ -40,7 +41,7 @@ class PossiblesMatrix:
     def get_not_empty_items(self, row: Scalar, col: Scalar) -> Vector:
         return filter_zeros_from_vector(self.matrix[row, col])
 
-    def update(self, rows:Vector, cols: Vector, numbers: Vector) -> None:
+    def update(self, rows: Vector, cols: Vector, numbers: Vector) -> None:
         """
         Updates whole PossiblesMatrix after placing new number in sudoku.
         """

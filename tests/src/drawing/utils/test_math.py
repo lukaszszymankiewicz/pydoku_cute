@@ -1,8 +1,11 @@
 import pytest
 
-from src.drawing.utils.math import (calculate_image_offset_from_cells,
-                                    calculate_image_offset_from_frame,
-                                    calculate_image_place, calculate_offset)
+from src.drawing.utils.math import (
+    calculate_image_offset_from_cells,
+    calculate_image_offset_from_frame,
+    calculate_image_place,
+    calculate_offset,
+)
 
 
 @pytest.mark.parametrize(

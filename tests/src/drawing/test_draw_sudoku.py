@@ -5,8 +5,7 @@ import pytest
 
 from src.drawing.draw_sudoku import draw_sudoku
 from src.objects import Sudoku
-from src.static.file_loaders.load_sample_sudoku import \
-    load_sample_unsolved_sudoku
+from src.static.file_loaders.load_sample_sudoku import load_sample_unsolved_sudoku
 
 
 @pytest.mark.parametrize("probe", list(range(100)))
