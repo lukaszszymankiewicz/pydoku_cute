@@ -44,11 +44,11 @@ Sudoku Generator (and solver)
         pip install -r requirements.txt \
     c) run script in terminal by using command: \
         python pydoku.py \
-    sudoku puzzle with solution will be gneerated in current format \\
+    sudoku puzzle with solution will be gneerated in current format \
 
     To generate harder sudoku (default difficult is easy), just parse appriopriate argument: \
-        python sydoku --difficult=hard\\
+        python sydoku --difficult=hard\
 
-    There are four difficulties: easy, medium, hard and immpossible \\
+    There are four difficulties: easy, medium, hard and immpossible \
 
 4. Have fun!
