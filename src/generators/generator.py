@@ -18,6 +18,14 @@ def generate(difficult: str = Difficult.easy) -> Tuple[Sudoku, Sudoku]:
     Secondly, array is filled up to last cell (fully solved sudoku is achieved)
     And, finally, number by number is taken from array till it results in sudoku with only one
     answer.
+    To achieve sudokus with different diffuculties, as a last step some random cells are emptied 
+    from such generated sudoku.
+
+    Args:
+        difficult: difficult of sudoku to be generated.
+
+    Returns:
+        Two Sudoku objects: one unsolved, and other which is solution to that one.
     """
     # generating empty sudoku
     sudoku = Sudoku(zeros(SUDOKU_SIZE))

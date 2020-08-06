@@ -10,6 +10,15 @@ from src.static.constants import ALL, EMPTY, SQUARE_MAPPING
 
 
 class PossiblesMatrix:
+    """
+    Holds possible numbers to be filled in every cell of Sudoku.
+
+    Cause sudoku is 9x9 cells array, and every cell can have every number from 1 to 9, empty
+    possibles matrix is basically 9x9x9 numpy cube.
+
+    Placing new number in sudoku array updateds its possibles matrix (cause every new numbers
+    "blocks" other number in its row, cols and square).
+    """
     __slots__ = ["matrix"]
 
     def __init__(self) -> None:
@@ -22,6 +31,9 @@ class PossiblesMatrix:
         return self.matrix[indices]
 
     def __setsqrs__(self, rows: Vector, columns: Vector, numbers: Vector, values: Vector) -> None:
+        """
+        Sets values in 3x3 squares.
+        """
         for row, col, number in zip(rows, columns, numbers):
             self.matrix[SQUARE_MAPPING[row], SQUARE_MAPPING[col], number] = values
 
@@ -29,12 +41,18 @@ class PossiblesMatrix:
         return filter_zeros_from_vector(self.matrix[row, col])
 
     def update(self, rows:Vector, cols: Vector, numbers: Vector) -> None:
+        """
+        Updates whole PossiblesMatrix after placing new number in sudoku.
+        """
         self[ALL, cols, numbers] = EMPTY
         self[rows, ALL, numbers] = EMPTY
         self[rows, cols, ALL] = EMPTY
         self.__setsqrs__(rows, cols, numbers, EMPTY)
 
     def find_sole_candidates(self) -> Matrix:
+        """
+        Searches PossiblesMatrix for numbers which is sole candidate to be put into sudoku.
+        """
         sole_candidates_rows = find_unique_number(self.matrix, Axis.row)
         sole_candidates_cols = find_unique_number(self.matrix, Axis.column)
         sole_candidates_nbrs = find_unique_number(self.matrix, Axis.number)

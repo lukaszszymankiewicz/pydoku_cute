@@ -9,6 +9,16 @@ from src.static.file_loaders import (
 
 
 def draw_sudoku(sudoku: Sudoku, path: FilePath) -> None:
+    """
+    Draws Sudoku objects and converts it into png file.
+    
+    Args:
+        sudoku: Sudoku object to be drawn (can be bot empty, solved or unsolved),
+        path: place where resulted png file will be saved.
+    
+    Returns:
+        None
+    """
     frame = load_empty_frame()
     numbers_pallete = load_numbers_pallete()
 

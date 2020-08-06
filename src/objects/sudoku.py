@@ -15,6 +15,15 @@ from .possibles_matrix import PossiblesMatrix
 
 
 class Sudoku:
+    """
+    Representation of Sudoku Puzzle.
+
+    Every sudoku is 9x9 cells frame, with every cell filled with number from 1 to 9. Purpose of
+    Sudoku puzzle is to filled such that no number repeats in every row, column and 3x3 square.
+
+    This object represents 9x9 array.
+
+    """
     __slots__ = ["array", "_possibles"]
 
     def __init__(self, array: Matrix):
