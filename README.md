@@ -37,3 +37,18 @@ Sudoku Generator (and solver)
     All images are archived as compressed numpy array. Manipulation of these object (placing numbers
     imaages on board) is also achieved using numpy (we treat image as 2 dimensional array). As a
     final step array (filled with numbers) is converted into png image using pypng library.
+
+3. How it works?
+    a) clone (or download) repo
+    b) create virtual environment and install requirements from requirements.txt
+        pip install -r requirements.txt
+    c) run script in terminal by using command:
+        python pydoku.py
+    sudoku puzzle with solution will be gneerated in current format
+
+    To generate harder sudoku (default difficult is easy), jus t parse appriopriate argument:
+        python sydoku --difficult=hard
+
+    There are four difficulties: easy, medium, hard and immpossible
+
+4. Have fun!
