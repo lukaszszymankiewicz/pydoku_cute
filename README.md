@@ -47,7 +47,7 @@ Sudoku Generator (and solver)
     sudoku puzzle with solution will be gneerated in current format
 
     To generate harder sudoku (default difficult is easy), just parse appriopriate argument: \
-        python sydoku --difficult=hard \
+        python sydoku --difficult=hard
 
     There are four difficulties: easy, medium, hard and impossible
 
