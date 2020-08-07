@@ -30,8 +30,8 @@ Sudoku Generator (and solver)
     Generating sudoku is most tricky part. First, some numbers are put randomly over board, after
     that it is solved using recursive approach. After that number by number is emptied from this
     solved sudokui after it can be solved using naive approach. As a result sudoku with single
-    solution is achieved (both wit hsolution). To generate harder puzzles, as a last step some
-    numbers are taken from single-solution puzzle.
+    solution is achieved (both with solution achieved earlier). To generate harder puzzles, as a last 
+    step some numbers are taken from single-solution puzzle.
 
 2. How it is drawn?
     All images are archived as compressed numpy array. Manipulation of these object (placing numbers
