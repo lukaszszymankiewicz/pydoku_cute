@@ -1,0 +1,70 @@
+{% extends 'bootstrap/base.html' %}
+
+
+{% block content %}
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}"/>
+  </head>
+  <body>
+
+  <br><br>
+  <div class="container-fluid no-padding">
+    <div class="row-lg-10 row-md-10">
+
+      <div class="col-lg-5 col-md-5 text-center">
+          <img class="img-responsive" src="{{ solved_sudoku_file_path[4:] }}"></img>
+      </div> 
+
+      <div class="col-lg-2 col-md-2 text-center">
+        <form action="/" method="POST">
+
+          <div class="difficult">
+
+            <div class="difficult-checked">
+                <input type="radio" id="easy" name="difficult" value="easy" {% if difficult == "easy" %}checked{% endif %} >
+                <label for="easy">Easy</label>
+            </div>
+
+            <div class="difficult-checked">
+                <input type="radio" id="medium" name="difficult" value="medium" {% if difficult == "medium" %}checked{% endif %}>
+                <label for="medium">Medium</label>
+            </div>
+
+            <div class="difficult-checked">
+                <input type="radio" id="hard" name="difficult" value="hard" {% if difficult ==
+                                                               "hard" %}checked{% endif %}>
+                <label for="hard">Hard</label>
+            </div>
+
+            <div class="difficult-checked">
+                <input type="radio" id="impossible" name="difficult" value="impossible" {% if difficult ==
+                                                               "impossible" %}checked{% endif %}>
+                <label for="impossible">Impossible</label>
+            </div>
+
+          </div> 
+
+          <br><br><br>
+
+          <button type="submit" class="btn btn-primary">
+            GENERATE
+          </button>
+
+        </form>
+        <br><br>
+        <button type="submit" class="btn btn-primary">
+          HELP
+        </button>
+
+      </div> 
+
+      <div class="col-lg-5 col-md-5 text-center">
+          <img class="img-responsive" src="{{ unsolved_sudoku_file_path[4:] }}"></img>
+      </div> 
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

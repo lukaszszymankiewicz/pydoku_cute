@@ -1,0 +1,82 @@
+.difficult div {
+  clear: both;
+  overflow: hidden;
+}
+
+.difficult label {
+  width: 80%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal;
+}
+
+.difficult input[type="radio"]:empty,
+.difficult input[type="checkbox"]:empty {
+  display: none;
+}
+
+.difficult input[type="radio"]:empty ~ label,
+.difficult input[type="checkbox"]:empty ~ label {
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.difficult input[type="radio"]:empty ~ label:before,
+.difficult input[type="checkbox"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+.difficult input[type="radio"]:hover:not(:checked) ~ label,
+.difficult input[type="checkbox"]:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+.difficult input[type="radio"]:hover:not(:checked) ~ label:before,
+.difficult input[type="checkbox"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .12em;
+  color: #C2C2C2;
+}
+
+.difficult input[type="radio"]:checked ~ label,
+.difficult input[type="checkbox"]:checked ~ label {
+  color: #777;
+}
+
+.difficult input[type="radio"]:checked ~ label:before,
+.difficult input[type="checkbox"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .12em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.difficult input[type="radio"]:focus ~ label:before,
+.difficult input[type="checkbox"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.difficult-checked input[type="radio"]:checked ~ label:before,
+.difficult-checked input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.btn-primary {
+  width: 80%;
+  align-items: center;
+}
