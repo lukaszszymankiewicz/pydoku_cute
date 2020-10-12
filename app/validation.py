@@ -4,6 +4,9 @@ from .src.enums import Difficult
 def validate_difficult(form: dict) -> str:
     """Validated difficult form and return chosen option."""
 
+    if not isinstance(form, dict):
+        return Difficult.default
+
     if list(form.keys()) != ["difficult"]:
         return Difficult.default
 

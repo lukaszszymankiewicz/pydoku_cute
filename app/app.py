@@ -5,6 +5,7 @@ from flask_bootstrap import Bootstrap
 
 from .file_helpers import delete_unused_sudokus, generate_sudokus_filenames
 from .file_paths import EMPTY_FRAME_FILE_PATH
+from .form_helpers import get_form_from_request
 from .src import draw_sudoku, generate
 from .src.enums import Difficult
 from .validation import validate_difficult
@@ -27,7 +28,8 @@ def main():
 
     else:
         delete_unused_sudokus()
-        difficult = validate_difficult(request.form)
+        form = get_form_from_request(request)
+        difficult = validate_difficult(form)
 
         solved_sudoku, unsolved_sudoku = generate(difficult=difficult)
         solved_sudoku_file_path, unsolved_sudoku_file_path = generate_sudokus_filenames()
