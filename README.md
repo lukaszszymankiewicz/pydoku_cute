@@ -30,25 +30,26 @@ Sudoku Generator (and solver)
     Generating sudoku is most tricky part. First, some numbers are put randomly over board, after
     that it is solved using recursive approach. After that number by number is emptied from this
     solved sudokui after it can be solved using naive approach. As a result sudoku with single
-    solution is achieved (both wit hsolution). To generate harder puzzles, as a last step some
-    numbers are taken from single-solution puzzle.
+    solution is achieved (both with solution achieved earlier). To generate harder puzzles, as a last 
+    step some numbers, randomly, are taken from single-solution puzzle. This results in a puzzle which
+    does not necessary have only one solution (and that is the goal!).
 
 2. How it is drawn?
     All images are archived as compressed numpy array. Manipulation of these object (placing numbers
-    imaages on board) is also achieved using numpy (we treat image as 2 dimensional array). As a
+    images on board) is also achieved using numpy (we treat image as 2 dimensional array). As a
     final step array (filled with numbers) is converted into png image using pypng library.
 
 3. How to use it? \
     a) clone (or download) repo' \
-    b) create virtual environment and install requirements from requirements.txt \
+    b) create (and activate) virtual environment and install requirements from requirements.txt \
         pip install -r requirements.txt \
     c) run script in terminal by using command: \
         python pydoku.py \
-    sudoku puzzle with solution will be gneerated in current format
+    sudoku puzzle with solution will be generated in current folder.
 
-    To generate harder sudoku (default difficult is easy), just parse appriopriate argument: \
-        python sydoku --difficult=hard \
+    To generate harder sudoku (default difficult is set to "easy"), just parse appriopriate argument: \
+        python pydoku --difficult=hard
 
-    There are four difficulties: easy, medium, hard and immpossible
+    There are four difficulties available: easy, medium, hard and impossible.
 
 4. Have fun!
