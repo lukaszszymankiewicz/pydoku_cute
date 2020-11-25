@@ -3,7 +3,7 @@ from typing import Tuple
 import numpy as np
 
 from .constants import EMPTY, SIDE_SIZE, SUDOKU_NUMBERS, SUDOKU_SIZE
-from .enums import Difficult, empty_cells_by_difficult
+from .enums import Difficult, difficult_settings
 from .naive_solver import naive_solver
 from .recursive_solver import recursive_solver
 from .sudoku import Sudoku
@@ -48,9 +48,8 @@ def generate(difficult: str = Difficult.default) -> Tuple[Sudoku, Sudoku]:
             break
 
     # refinining the sudoku by its difficult
-    random_indices = get_random_indices(
-        matrix=last_step_sudoku.where_is_filled, sample_size=empty_cells_by_difficult[difficult],
-    )
-    last_step_sudoku[random_indices] = EMPTY
+    while np.sum(last_step_sudoku.array != EMPTY) > difficult_settings[difficult]:
+        random_indices = get_random_indices(matrix=last_step_sudoku.where_is_filled)
+        last_step_sudoku[random_indices] = EMPTY
 
     return last_step_sudoku, filled_sudoku

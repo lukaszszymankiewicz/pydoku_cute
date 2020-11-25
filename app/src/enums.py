@@ -7,4 +7,4 @@ class Difficult:
     legal_difficulties = ["easy", "medium", "hard", "impossible"]
 
 
-empty_cells_by_difficult = {"easy": 0, "medium": 1, "hard": 2, "impossible": 4}
+difficult_settings = {"easy": 81, "medium": 60, "hard": 45, "impossible": 25}
