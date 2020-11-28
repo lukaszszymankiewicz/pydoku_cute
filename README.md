@@ -47,3 +47,8 @@ Sudoku Generator
 
 5. Copyrights
     Please, feel free to use app as you wish. Have fun!
+
+TODO:
+[ ] Add javascript to stop refresh after puzzle is generated
+[ ] Remove bootstrap as it is adding o lot of overhead 
+[x] Make difficulties more relaiable
