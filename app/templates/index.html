@@ -1,71 +1,80 @@
 {% extends 'bootstrap/base.html' %}
 
+<head>
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}"/>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='generate.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='init.js') }}"></script>
+  <script>
+    var unsolvedSudokuPath = "static/sudokus/unsolved.png?puzzle=";
+    var solvedSudokuPath = "static/sudokus/solved.png?puzzle=";
+    var emptySudokuPath = "static/sudokus/empty.png";
+  </script>
+{% endblock %}
+
+</head>
 
 {% block content %}
-  <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}"/>
-  </head>
+  <body onload="initialize()">
   <body>
-
   <br><br>
   <div class="container-fluid no-padding">
-    <div class="row-lg-10 row-md-10">
+  <div class="row-lg-10 row-md-10">
 
-      <div class="col-lg-5 col-md-5 text-center">
-          <img class="img-responsive" src="{{ solved_sudoku_file_path[4:] }}"></img>
-      </div> 
+    <div class="col-lg-5 col-md-5 text-center">
+      <img class="img-responsive" id="solved_sudoku" src=""></img>
+    </div> 
 
-      <div class="col-lg-2 col-md-2 text-center">
-        <form action="/" method="POST">
+    <div class="col-lg-2 col-md-2 text-center">
 
-          <div class="difficult">
+    <form>
+      <div class="difficult">
 
-            <div class="difficult-checked">
-                <input type="radio" id="easy" name="difficult" value="easy" {% if difficult == "easy" %}checked{% endif %} >
-                <label for="easy">Easy</label>
-            </div>
+        <div class="difficult-checked">
+          <input type="radio" id="easy" name="difficult" value="easy" checked>
+          <label for="easy">Easy</label>
+        </div>
 
-            <div class="difficult-checked">
-                <input type="radio" id="medium" name="difficult" value="medium" {% if difficult == "medium" %}checked{% endif %}>
-                <label for="medium">Medium</label>
-            </div>
+        <div class="difficult-checked">
+          <input type="radio" id="medium" name="difficult" value="medium">
+          <label for="medium">Medium</label>
+        </div>
 
-            <div class="difficult-checked">
-                <input type="radio" id="hard" name="difficult" value="hard" {% if difficult ==
-                                                               "hard" %}checked{% endif %}>
-                <label for="hard">Hard</label>
-            </div>
+        <div class="difficult-checked">
+          <input type="radio" id="hard" name="difficult" value="hard">
+          <label for="hard">Hard</label>
+        </div>
 
-            <div class="difficult-checked">
-                <input type="radio" id="impossible" name="difficult" value="impossible" {% if difficult ==
-                                                               "impossible" %}checked{% endif %}>
-                <label for="impossible">Impossible</label>
-            </div>
-
-          </div> 
-
-          <br><br><br>
-
-          <button type="submit" class="btn btn-primary">
-            GENERATE
-          </button>
+        <div class="difficult-checked">
+          <input type="radio" id="impossible" name="difficult" value="impossible">
+          <label for="impossible">Impossible</label>
+        </div>
 
         </form>
-        <br><br>
-        <a href="https://github.com/lukaszszymankiewicz/pydoku_cute" target="_blank">
-          <button type="submit" class="btn btn-primary">
-            SOURCE CODE
-          </button>
-        </a>
+
       </div> 
 
-      <div class="col-lg-5 col-md-5 text-center">
-          <img class="img-responsive" src="{{ unsolved_sudoku_file_path[4:] }}"></img>
-      </div> 
+      <br><br><br>
 
-    </div>
+      <input type = "button" id = "generation_button" value = "GENERATE">
+
+    <br><br>
+    <a href="https://github.com/lukaszszymankiewicz/pydoku_cute" target="_blank">
+      <button class="btn btn-primary">
+      SOURCE CODE
+      </button>
+    </a>
+    </div> 
+
+    <div class="col-lg-5 col-md-5 text-center">
+      <img class="img-responsive" id="unsolved_sudoku" src=""></img>
+    </div> 
+
   </div>
-
-
+  </div>
 
 {% endblock %}
