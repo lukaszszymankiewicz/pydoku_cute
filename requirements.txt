@@ -1,5 +1,4 @@
 flask==1.1.2
 gunicorn==20.0.4
-python-dotenv==0.14.0
 numpy==1.18.0
 pypng==0.0.20
