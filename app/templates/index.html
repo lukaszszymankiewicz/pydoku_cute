@@ -1,5 +1,4 @@
-{% extends 'bootstrap/base.html' %}
-
+<!doctype html>
 <head>
 {% block stylesheets %}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}"/>
@@ -18,63 +17,73 @@
 
 </head>
 
-{% block content %}
-  <body onload="initialize()">
-  <body>
-  <br><br>
-  <div class="container-fluid no-padding">
-  <div class="row-lg-10 row-md-10">
+<body onload="initialize()">
 
-    <div class="col-lg-5 col-md-5 text-center">
-      <img class="img-responsive" id="solved_sudoku" src=""></img>
+{% block content %}
+
+  <div class="row">
+    <div class="sudoku_container">
+      <img id="solved_sudoku" src=""></img>
     </div> 
 
-    <div class="col-lg-2 col-md-2 text-center">
+    <div class="options">
+      <div class="difficult_options_container">
+        <form>
+  
+        <label class="difficult_button">
+          <input type="radio" id="easy" name="difficult" checked>
+            <span>
+              EASY
+            </span>
+        </label>
 
-    <form>
-      <div class="difficult">
+        <label class="difficult_button">
+          <input type="radio" id="medium" name="difficult">
+            <span>
+              MEDIUM
+            </span>
+        </label>
 
-        <div class="difficult-checked">
-          <input type="radio" id="easy" name="difficult" value="easy" checked>
-          <label for="easy">Easy</label>
-        </div>
+        <label class="difficult_button">
+          <input type="radio" id="hard" name="difficult">
+            <span>
+              HARD
+            </span>
+        </label>
 
-        <div class="difficult-checked">
-          <input type="radio" id="medium" name="difficult" value="medium">
-          <label for="medium">Medium</label>
-        </div>
-
-        <div class="difficult-checked">
-          <input type="radio" id="hard" name="difficult" value="hard">
-          <label for="hard">Hard</label>
-        </div>
-
-        <div class="difficult-checked">
-          <input type="radio" id="impossible" name="difficult" value="impossible">
-          <label for="impossible">Impossible</label>
-        </div>
+        <label class="difficult_button">
+          <input type="radio" id="immpossible" name="difficult">
+            <span>
+              IMMPOSSIBLE
+            </span>
+        </label>
 
         </form>
+      </div>
 
-      </div> 
+      <div class="other_buttons">
+        <label class="generate_button">
+          <span>
+            <input type="radio" id="generation_button">
+              GENERATE
+          </span>
+        </label>
 
-      <br><br><br>
+        <label class="source_code_button">
+          <span>
+            <input type="radio" id="generation_button">
+              <a href="https://github.com/lukaszszymankiewicz/pydoku_cute" target="_blank">
+                SOURCE CODE
+              </a>
+          </span>
+        </label>
 
-      <input type = "button" id = "generation_button" value = "GENERATE">
+      </div>
+    </div>
 
-    <br><br>
-    <a href="https://github.com/lukaszszymankiewicz/pydoku_cute" target="_blank">
-      <button class="btn btn-primary">
-      SOURCE CODE
-      </button>
-    </a>
+    <div class="sudoku_container">
+      <img id="unsolved_sudoku" src=""></img>
     </div> 
-
-    <div class="col-lg-5 col-md-5 text-center">
-      <img class="img-responsive" id="unsolved_sudoku" src=""></img>
-    </div> 
-
-  </div>
-  </div>
+</div> 
 
 {% endblock %}
