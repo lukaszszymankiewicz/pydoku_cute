@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask, render_template, request
-from flask_bootstrap import Bootstrap
 
 from .file_helpers import delete_unused_sudokus, generate_sudokus_filenames
 from .file_paths import EMPTY_FRAME_FILE_PATH
@@ -10,7 +9,6 @@ from .src import draw_sudoku, generate
 from .src.enums import Difficult
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 app.config.from_object(os.environ.get("APP_CONFIG"))
 
 
