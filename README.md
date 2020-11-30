@@ -50,5 +50,5 @@ Sudoku Generator
 
 TODO:
 [x] Add javascript to stop refresh after puzzle is generated
-[ ] Remove bootstrap as it is adding o lot of overhead 
+[x] Remove bootstrap as it is adding o lot of overhead 
 [x] Make difficulties more relaiable
