@@ -49,6 +49,6 @@ Sudoku Generator
     Please, feel free to use app as you wish. Have fun!
 
 TODO:
-[x] Add javascript to stop refresh after puzzle is generated
-[x] Remove bootstrap as it is adding o lot of overhead 
-[x] Make difficulties more relaiable
+- [x] Add javascript to stop refresh after puzzle is generated
+- [x] Remove bootstrap as it is adding o lot of overhead 
+- [x] Make difficulties more relaiable
