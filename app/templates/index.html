@@ -10,7 +10,7 @@
   <script type="text/javascript" src="{{ url_for('static', filename='init.js') }}"></script>
   <script>
     var unsolvedSudokuPath = "static/sudokus/unsolved.png?puzzle=";
-    var solvedSudokuPath = "static/sudokus/solved.png?puzzle=";
+    var solvedSudokuPath = "static/sudokus/solved.png?puzzle="; 
     var emptySudokuPath = "static/sudokus/empty.png";
   </script>
 {% endblock %}
@@ -52,9 +52,9 @@
         </label>
 
         <label class="difficult_button">
-          <input type="radio" id="immpossible" value="immpossible" name="difficult">
+          <input type="radio" id="impossible" value="impossible" name="difficult">
             <span>
-              IMMPOSSIBLE
+              IMPOSSIBLE
             </span>
         </label>
 
