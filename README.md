@@ -1,15 +1,16 @@
-Sudoku Generator 
+## Sudoku Generator 
 
-1. What is this?
-    It is simple algorithm for generating Sudoku puzzles wrapped in simple flask app.
-    Goal of this code is to provide well-written code for such use (most of the programs/scripts 
+### What is this?
+    It is algorithm for generating Sudoku puzzles (resulted as downloadable png images) wrapped in 
+    simple web app.
+    Goal of this project is to provide well-written code for such use (most of the programs/scripts 
     for such use is rather rudimentally).
 
-2. What is Sudoku?
+### What is Sudoku?
     Sudoku puzzle is 9x9 cells frame. Every cell can be fill with one number from 1 to 9. The
     goal of the game is to fill empty cells with appropriate numbers. 
 
-3. How it works?
+### How it works?
     Code holds every number put into every cell and possible legal numbers to put into. 
 
     Of course, when some cell is fill, its state is "fixed", and and there is no possible numbers
