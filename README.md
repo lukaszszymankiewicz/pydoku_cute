@@ -41,15 +41,10 @@
     step some numbers, are took from single-solution puzzle. This results in a puzzle which
     does not necessary have only one solution (and that is the goal!).
     
-4. How it is draw?
-    All images are archive as compressed numpy array. Manipulation of these object (placing numbers
-    images on board) is also achieved using numpy (we treat image as 2 dimensional array). As a
-    final step array (filled with numbers) is convert into png image using pypng library.
+### How it is drawn?
+    All images are archived as compressed numpy array. Generating resulted Sudoku image is also 
+    achieved using numpy (we treat image as 2 dimensional array). Converting these numpy array to 
+    png image is achieved by pypng library.
 
-5. Copyrights
+### Copyrights
     Please, feel free to use app as you wish. Have fun!
-
-TODO:
-- [x] Add javascript to stop refresh after puzzle is generated
-- [x] Remove bootstrap as it is adding o lot of overhead 
-- [x] Make difficulties more relaiable
