@@ -3,18 +3,18 @@ $(function() {
     var difficult = $('form').serialize();
 
     $.getJSON('/generate_new_puzzle', {difficult}, function(data){
-        setPaths();
+        setPaths(data);
     });
 
     return false;
   });
 });
 
-function setPaths(){
+function setPaths(data){
   var suffix = getRandomSuffix();
 
-  document.getElementById("solved_sudoku").src = getSudokuPath(solvedSudokuPath, suffix);
-  document.getElementById("unsolved_sudoku").src = getSudokuPath(unsolvedSudokuPath, suffix);
+  document.getElementById("solved_sudoku").src = getSudokuPath(data["solved_sudoku_path"], suffix);
+  document.getElementById("unsolved_sudoku").src = getSudokuPath(data["unsolved_sudoku_path"], suffix);
 }
 
 function getRandomSuffix(){
@@ -22,5 +22,6 @@ function getRandomSuffix(){
 }
 
 function getSudokuPath(path, suffix) {
-   return path.concat(suffix);
+   var interfix = '?puzzle=';
+   return path.concat(interfix, suffix);
 }

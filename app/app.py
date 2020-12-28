@@ -3,7 +3,8 @@ import os
 from flask import Flask, jsonify, render_template, request
 
 from .file_helpers import delete_unused_sudokus
-from .file_paths import SOLVED_SUDOKU_PATH, UNSOLVED_SUDOKU_PATH
+from .file_paths import (APP_PREFIX, IMAGE_EXTENSION, SOLVED_SUDOKU_PREFIX,
+                         SUDOKUS_FILE_PATH, UNSOLVED_SUDOKU_PREFIX)
 from .form_helpers import get_difficult_from_request
 from .src import Difficult, draw_sudoku, generate
 
@@ -19,10 +20,21 @@ def generate_new_puzzle():
     difficult = get_difficult_from_request(request.args)
     solved_sudoku, unsolved_sudoku = generate(difficult)
 
-    draw_sudoku(solved_sudoku, path=SOLVED_SUDOKU_PATH)
-    draw_sudoku(unsolved_sudoku, path=UNSOLVED_SUDOKU_PATH)
+    draw_sudoku(
+        solved_sudoku,
+        path=APP_PREFIX + SUDOKUS_FILE_PATH + SOLVED_SUDOKU_PREFIX + IMAGE_EXTENSION,
+    )
+    draw_sudoku(
+        unsolved_sudoku,
+        path=APP_PREFIX + SUDOKUS_FILE_PATH + UNSOLVED_SUDOKU_PREFIX + IMAGE_EXTENSION,
+    )
 
-    return jsonify("nothing")
+    return jsonify(
+        {
+            "solved_sudoku_path": SUDOKUS_FILE_PATH + SOLVED_SUDOKU_PREFIX + IMAGE_EXTENSION,
+            "unsolved_sudoku_path": SUDOKUS_FILE_PATH + UNSOLVED_SUDOKU_PREFIX + IMAGE_EXTENSION,
+        }
+    )
 
 
 @app.route("/")

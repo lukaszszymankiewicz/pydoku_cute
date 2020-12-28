@@ -1,5 +1,6 @@
 IMAGE_EXTENSION = ".png"
-SUDOKUS_FILE_PATH = "app/static/sudokus/"
+APP_PREFIX = "app/"
+SUDOKUS_FILE_PATH = "static/sudokus/"
 SOLVED_SUDOKU_PREFIX = "solved"
 UNSOLVED_SUDOKU_PREFIX = "unsolved"
 
