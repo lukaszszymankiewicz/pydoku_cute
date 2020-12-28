@@ -48,3 +48,9 @@
 
 ### Copyrights
     Please, feel free to use app as you wish. Have fun!
+
+### TODO
+- [ ] Add web app tests (requests and so on)
+- [ ] Check for untested functions.
+- [ ] Upgrade docstrings (where needed)
+- [ ] Add timeout to some tests (sometimes it is taking too long)
