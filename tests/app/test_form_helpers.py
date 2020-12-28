@@ -1,7 +1,5 @@
-import pytest
-
+from app.form_helpers import validate_difficult
 from app.src.enums import Difficult
-from app.validation import validate_difficult
 
 
 def test_validate_difficult_returns_default_difficult_if_not_dict_is_inputted():
