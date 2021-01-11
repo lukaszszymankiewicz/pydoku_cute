@@ -4,13 +4,15 @@
     It is algorithm for generating Sudoku puzzles (resulted as downloadable png images) wrapped in 
     simple web app.
     Goal of this project is to provide well-written code for such use (most of the programs/scripts 
-    for such use is rather rudimentally).
+    for solving/generating sudokus are rather rudimentally).
 
 ### What is Sudoku?
-    Sudoku puzzle is 9x9 cells frame. Every cell can be fill with one number from 1 to 9. The
-    goal of the game is to fill empty cells with appropriate numbers. 
+    Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudoku, the objective 
+    is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids
+    that compose the grid (also called "boxes", "blocks", or "regions") contain all of the digits from 1 to 9. 
+    The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution. 
 
-### How it works?
+### Alhorithm
     Code holds every number put into every cell and possible legal numbers to put into. 
 
     Of course, when some cell is fill, its state is "fixed", and and there is no possible numbers
