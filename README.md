@@ -12,7 +12,7 @@
     that compose the grid (also called "boxes", "blocks", or "regions") contain all of the digits from 1 to 9. 
     The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution. 
 
-### Alhorithm
+### Alghorithm
     Code holds every number put into every cell and possible legal numbers to put into. 
 
     Of course, when some cell is fill, its state is "fixed", and and there is no possible numbers
@@ -50,9 +50,3 @@
 
 ### Copyrights
     Please, feel free to use app as you wish. Have fun!
-
-### TODO
-- [ ] Add web app tests (requests and so on)
-- [ ] Check for untested functions.
-- [ ] Upgrade docstrings (where needed)
-- [ ] Add timeout to some tests (sometimes it is taking too long)
