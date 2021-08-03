@@ -12,8 +12,8 @@
     that compose the grid (also called "boxes", "blocks", or "regions") contain all of the digits from 1 to 9. 
     The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution. 
 
-### Alghorithm
-    Code holds every number put into every cell and possible legal numbers to put into. 
+### Algorithm
+    Code holds every number put into every cell and possible legal numbers to put into empty cells. 
 
     Of course, when some cell is fill, its state is "fixed", and and there is no possible numbers
     for this cell. 
