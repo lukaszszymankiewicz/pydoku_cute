@@ -1,5 +1,8 @@
 ## Sudoku Generator 
 
+### Pydoku
+    To see app in full glory, visit: https://pydoku.herokuapp.com/
+
 ### What is this?
     It is algorithm for generating Sudoku puzzles (resulted as downloadable png images) wrapped in 
     simple web app.
