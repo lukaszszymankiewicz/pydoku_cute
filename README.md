@@ -2,6 +2,7 @@
 
 ### Pydoku
     To see app in full glory, visit: https://pydoku.herokuapp.com/
+    WARNING: site is unreachable because heroku closed free tier! Implementation of new version in progres.
 
 ### What is this?
     It is algorithm for generating Sudoku puzzles (resulted as downloadable png images) wrapped in 
